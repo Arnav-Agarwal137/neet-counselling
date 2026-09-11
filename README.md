@@ -48,7 +48,10 @@ Treat it like a *"anyone with the link can edit"* document: **whoever holds your
 link can edit your board**, so send it to your family, not to a group of four
 hundred. There is no password, because there is nobody to be a password for.
 
-**Also in it:** per-college **facilities, location and campus**, with a map view ·
+**Also in it:** **one-tap copy** of any college and its verdict, ready to paste
+into a message · **expanding detail panels** on every college, so the list stays
+scannable until you want the depth · per-college **facilities, location and
+campus**, with a map view ·
 **dark mode** · everything **saved between visits** · **search across every
 college** · works on a phone, because that is where you will actually open it
 during counselling.
