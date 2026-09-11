@@ -98,6 +98,10 @@ avoidable way people lose a seat.**
 | **Family can reply** | Share your list; they comment per college and counter each other |
 | **Private by link** | Your board has a random 128-bit address. No account, and no one finds it without your link |
 | **WhatsApp sharing** | One tap, to where the conversation already happens |
+| **Reputation score, explained** | Every college carries a score out of 100 — and opens to show *why*: NIRF 2025 rank, and what each factor added |
+| **An "Unverified" filter** | Cutoffs I have round-checked are separated from ones carried over unchecked. **You can see exactly which numbers to trust**, which no other predictor will tell you |
+| **Deleted, and restorable** | Remove a college and it goes to a Deleted tab, not into nothing. Put it back whenever |
+| **Campus photos in a lightbox** | Arrow keys to move through them, `Esc` to close. Map view in its own panel |
 | **Campus detail** | Facilities, location, map view |
 | **Instant search** | Narrows as you type, no submit button |
 | **Filters and sorting** | Quota, category, state, round; any column, both directions |
