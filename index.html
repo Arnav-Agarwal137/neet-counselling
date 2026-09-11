@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEET Counselling Toolkit</title>
+<style>*{box-sizing:border-box}
+:root{--bg:#fbfbfa;--card:#fff;--ink:#16181d;--dim:#5b6470;--line:#dfe3e8;--accent:#1f4fd8;--offer:#0c6b58;--offerbg:#eaf6f2}
+@media(prefers-color-scheme:dark){:root{--bg:#121417;--card:#181b20;--ink:#e8ecf1;--dim:#95a0ad;--line:#2a2f36;--accent:#7aa2ff;--offer:#5fd3b2;--offerbg:#12241f}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.62 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:800px;margin:0 auto;padding:52px 20px 84px}
+h1{font-size:clamp(28px,5.4vw,42px);margin:0 0 10px;letter-spacing:-.022em;line-height:1.1}
+.lede{color:var(--dim);margin:0 0 14px;font-size:18px;max-width:62ch}
+.note{color:var(--dim);margin:0 0 34px;font-size:14.5px;max-width:62ch}
+a.card{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);
+ border-radius:12px;padding:18px 20px;margin-bottom:12px;transition:border-color .15s,transform .15s}
+a.card:hover{border-color:var(--accent);transform:translateY(-1px)}
+a.card b{display:block;font-size:17.5px;margin-bottom:4px}
+a.card span{color:var(--dim);font-size:14.5px;display:block}
+.feat{margin:34px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+@media(max-width:620px){.feat{grid-template-columns:1fr}}
+.feat li{color:var(--dim);font-size:14.5px;padding-left:20px;position:relative}
+.feat li:before{content:"\2713";position:absolute;left:0;color:var(--accent);font-weight:700}
+.offer{margin-top:38px;background:var(--offerbg);border:1px solid var(--offer);border-radius:12px;padding:20px 22px}
+.offer b{display:block;font-size:17px;margin-bottom:7px;color:var(--offer)}
+.offer p{margin:0 0 12px;font-size:15px}
+.offer a{display:inline-block;background:var(--offer);color:#fff;text-decoration:none;padding:9px 16px;border-radius:8px;font-weight:600;font-size:14.5px}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--dim);font-size:14px}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>NEET Counselling Toolkit</h1>
+<p class="lede">Five tools for the part nobody prepares you for: after the result.</p>
+<p class="note">Two years to get the rank. Then a week to make a decision you live with for five and a half years.</p>
+<a class="card" href="rank-finder/"><b>Rank Finder</b><span>Enter a rank &mdash; colleges split into You Get In and Out of Range, with live counts</span></a>
+<a class="card" href="nirf-karnataka/"><b>NIRF Karnataka College Guide</b><span>NIRF 2025 rank, fees, bond terms and your own notes. Search, filter, sort, print</span></a>
+<a class="card" href="state-colleges/"><b>State Medical Colleges 2026</b><span>The full Karnataka state-quota list, searchable, print-ready</span></a>
+<a class="card" href="aiims-and-central/"><b>AIIMS &amp; Central Colleges</b><span>AIIMS, BHU, MAMC, VMMC and the rest &mdash; filters as you type</span></a>
+<a class="card" href="document-checklist/"><b>Master Document Checklist</b><span>Every document MCC and KEA want. Remembers your ticks. Prints to one page</span></a>
+<ul class="feat">
+<li>Instant search</li>
+<li>Filter by quota, category, state</li>
+<li>Sort any column</li>
+<li>Live rank matching with counts</li>
+<li>Real print-to-PDF stylesheet</li>
+<li>Keyboard shortcuts</li>
+<li>One HTML file each &mdash; no install</li>
+<li>Works offline once saved</li>
+<li>Progress kept in your browser only</li>
+<li>Nothing uploaded anywhere</li>
+<li>Built for a phone, not shrunk onto one</li>
+<li>Free and MIT licensed</li>
+</ul>
+<div class="offer"><b>Want one built around your rank?</b><p>Everything here is Karnataka general domicile and one particular rank &mdash; which is what makes it useful, and why it may not fit you. I will build you a personalised one for your rank, state and category. <b>Right now I am doing it free</b>, in exchange for honest feedback on whether it actually helped.</p><a href="https://github.com/Arnav-Agarwal137/neet-counselling/issues/new">Ask on GitHub &rarr;</a></div>
+<footer>Built by <a href="https://github.com/Arnav-Agarwal137">Arnav Agarwal</a>. MIT licensed. No login, no tracking, nothing uploaded anywhere.</footer>
+</div>
+</body>
+</html>

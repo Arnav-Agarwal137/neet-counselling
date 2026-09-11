@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIIMS &amp; Central College Info — NEET 2025</title>
+<style>
+/* ── TOKENS ─────────────────────────────────────────────────────────────── */
+:root {
+  --ink:       #1a1a2e;
+  --ink2:      #2d2d4e;
+  --mid:       #5a5a8a;
+  --pale:      #e8e8f4;
+  --bg:        #f7f7fc;
+  --white:     #ffffff;
+
+  /* accent */
+  --teal:      #0d7e8a;
+  --teal-lt:   #e0f5f7;
+  --amber:     #d97706;
+  --amber-lt:  #fef3c7;
+  --red:       #be123c;
+  --red-lt:    #fee2e2;
+  --green:     #15803d;
+  --green-lt:  #dcfce7;
+  --sky:       #0369a1;
+  --sky-lt:    #e0f2fe;
+  --purple:    #7c3aed;
+  --purple-lt: #ede9fe;
+  --orange:    #c2410c;
+  --orange-lt: #ffedd5;
+
+  --r:  8px;
+  --r2: 4px;
+  --sh: 0 2px 8px rgba(0,0,0,.08);
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ── RESET / BASE ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 13px; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.55; }
+
+/* ── HEADER ──────────────────────────────────────────────────────────────── */
+.site-header {
+  background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6b 50%, #0d7e8a 100%);
+  color: #fff;
+  padding: 36px 40px 28px;
+}
+.site-header h1 {
+  font-size: 2rem; font-weight: 800; letter-spacing: -.5px;
+  line-height: 1.15;
+}
+.site-header h1 span { color: #7dd3e8; }
+.site-header .sub {
+  margin-top: 8px; font-size: .95rem; opacity: .85; font-weight: 400;
+}
+.header-pills { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.pill {
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 100px;
+  padding: 4px 14px; font-size: .78rem; color: #e8f8fc;
+}
+
+/* ── LEGEND BAR ──────────────────────────────────────────────────────────── */
+.legend-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--pale);
+  padding: 10px 40px;
+  display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center;
+  font-size: .78rem; color: var(--mid);
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot {
+  width: 11px; height: 11px; border-radius: 2px; flex-shrink: 0;
+}
+
+/* ── SECTION WRAPPER ─────────────────────────────────────────────────────── */
+.section { padding: 30px 40px; }
+.section + .section { padding-top: 0; }
+.section-title {
+  font-size: 1.05rem; font-weight: 700; color: var(--ink);
+  text-transform: uppercase; letter-spacing: .8px;
+  padding-bottom: 10px; border-bottom: 2px solid var(--teal);
+  margin-bottom: 18px;
+}
+.section-note {
+  font-size: .78rem; color: var(--mid);
+  background: var(--sky-lt); border-left: 3px solid var(--sky);
+  padding: 8px 12px; border-radius: 0 var(--r2) var(--r2) 0;
+  margin-bottom: 16px;
+}
+
+/* ── TABLE ───────────────────────────────────────────────────────────────── */
+.tbl-wrap { overflow-x: auto; border-radius: var(--r); box-shadow: var(--sh); }
+table {
+  width: 100%; border-collapse: collapse; font-size: .8rem;
+  background: var(--white);
+}
+thead tr { background: var(--ink); color: #fff; }
+thead th {
+  padding: 10px 10px; text-align: left; font-weight: 600;
+  font-size: .73rem; letter-spacing: .4px; white-space: nowrap;
+}
+tbody tr { border-bottom: 1px solid #f0f0f8; }
+tbody tr:hover { background: #f4f4fc; }
+tbody td {
+  padding: 9px 10px; vertical-align: top; line-height: 1.45;
+}
+
+/* row type colours */
+.row-central    { border-left: 3px solid var(--teal); }
+.row-ka-private { border-left: 3px solid var(--green); }
+.row-ka-deemed  { border-left: 3px solid var(--amber); }
+.row-state-other{ border-left: 3px solid var(--sky); }
+.row-private    { border-left: 3px solid var(--purple); }
+.row-no-mbbs    { border-left: 3px solid #ccc; background: #fafafa; color: var(--mid); }
+.row-extra      { border-left: 3px solid var(--orange); }
+
+/* badge helpers */
+.badge {
+  display: inline-block; padding: 2px 7px; border-radius: 100px;
+  font-size: .7rem; font-weight: 600; white-space: nowrap;
+}
+.b-yes   { background: var(--green-lt);  color: var(--green); }
+.b-no    { background: var(--red-lt);    color: var(--red); }
+.b-warn  { background: var(--amber-lt);  color: var(--amber); }
+.b-na    { background: var(--pale);      color: var(--mid); }
+.b-info  { background: var(--sky-lt);    color: var(--sky); }
+.b-kea   { background: var(--teal-lt);   color: var(--teal); }
+.b-mcc   { background: var(--purple-lt); color: var(--purple); }
+
+/* cutoff rounds mini-table */
+.rnd-table { border-collapse: collapse; font-size: .72rem; width: 100%; }
+.rnd-table td, .rnd-table th {
+  padding: 2px 5px; border: 1px solid #e8e8f4; white-space: nowrap;
+}
+.rnd-table th { background: #f0f0fa; font-weight: 600; }
+.rnd-na { color: #aaa; font-style: italic; }
+
+/* fee highlight */
+.fee-cheap  { color: var(--green);  font-weight: 600; }
+.fee-mid    { color: var(--amber);  font-weight: 600; }
+.fee-high   { color: var(--red);    font-weight: 600; }
+.fee-na     { color: var(--mid);    font-style: italic; }
+
+/* ── RANKING SECTION ──────────────────────────────────────────────────────── */
+.rank-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 16px;
+}
+.rank-card {
+  background: var(--white);
+  border-radius: var(--r);
+  box-shadow: var(--sh);
+  overflow: hidden;
+}
+.rank-card-header {
+  padding: 10px 14px 8px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .5px;
+  text-transform: uppercase; color: #fff;
+}
+.rh-central  { background: var(--teal); }
+.rh-delhi    { background: var(--sky); }
+.rh-ka       { background: var(--green); }
+.rh-state    { background: var(--purple); }
+.rh-deemed   { background: var(--amber); }
+.rank-card ol { padding: 0; margin: 0; list-style: none; }
+.rank-card ol li {
+  padding: 7px 14px;
+  border-bottom: 1px solid var(--pale);
+  font-size: .8rem;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.rank-card ol li:last-child { border-bottom: none; }
+.rn { flex-shrink: 0; width: 20px; font-weight: 700; color: var(--mid); font-size: .75rem; text-align: right; }
+.rc { flex: 1; }
+.rc strong { display: block; color: var(--ink); font-size: .82rem; }
+.rc .rrank { color: var(--teal); font-size: .72rem; }
+
+/* ── FOOTER ─────────────────────────────────────────────────────────────── */
+.footer {
+  background: var(--ink); color: rgba(255,255,255,.5);
+  text-align: center; padding: 18px 40px; font-size: .75rem; margin-top: 30px;
+}
+.footer strong { color: rgba(255,255,255,.8); }
+
+/* ── KEY BOX ─────────────────────────────────────────────────────────────── */
+.key-box {
+  background: var(--white); border-radius: var(--r); box-shadow: var(--sh);
+  padding: 16px 20px; margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 12px;
+}
+.key-box h3 { width: 100%; font-size: .8rem; color: var(--mid); margin-bottom: 4px; }
+.krow { display: flex; align-items: center; gap: 6px; font-size: .78rem; min-width: 200px; }
+.krow .legend-dot { width: 14px; height: 14px; border-radius: 2px; }
+
+/* ── PRINT ───────────────────────────────────────────────────────────────── */
+@media print {
+  .site-header { padding: 20px; }
+  .section { padding: 16px 20px; }
+  table { font-size: .7rem; }
+}
+
+/* ── AIIMS / CENTRAL SECTION ─────────────────────────────────────────────── */
+.ac-section-title { font-size:1.1rem;font-weight:800;color:var(--ink);margin-bottom:4px;letter-spacing:-.3px; }
+.ac-section-note { font-size:.78rem;color:var(--mid);margin-bottom:16px;line-height:1.6; }
+.ac-advantage-box { background:var(--white);border-left:4px solid var(--purple);border-radius:var(--r);box-shadow:var(--sh);padding:16px 20px;margin-bottom:24px; }
+.ac-advantage-box .ac-adv-title { font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--purple);margin-bottom:10px; }
+.ac-adv-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px; }
+.ac-adv-item { background:var(--bg);border:1px solid var(--pale);border-radius:var(--r2);padding:10px 12px;font-size:.78rem;line-height:1.55;color:var(--mid); }
+.ac-adv-item strong { display:block;color:var(--ink);margin-bottom:3px;font-size:.8rem; }
+.ac-subsection-label { font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--mid);border-bottom:2px solid var(--pale);padding-bottom:6px;margin-bottom:12px;margin-top:24px;display:flex;align-items:center;gap:8px; }
+.ac-subsection-label .ac-label-dot { width:10px;height:10px;border-radius:2px;flex-shrink:0; }
+.ac-search-wrap { display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap; }
+.ac-search-input { flex:1;min-width:220px;max-width:380px;border:1.5px solid var(--pale);border-radius:6px;padding:7px 12px;font-size:.82rem;font-family:var(--font);color:var(--ink);background:var(--white);outline:none;transition:border-color .2s; }
+.ac-search-input:focus { border-color:var(--teal); }
+.ac-search-hint { font-size:.72rem;color:var(--mid); }
+.ac-modal-overlay { display:none;position:fixed;inset:0;background:rgba(10,10,30,.55);z-index:9999;align-items:center;justify-content:center;padding:20px; }
+.ac-modal-overlay.open { display:flex; }
+.ac-modal { background:var(--white);border-radius:var(--r);box-shadow:0 8px 40px rgba(0,0,0,.2);width:100%;max-width:640px;max-height:88vh;overflow-y:auto;padding:28px;position:relative; }
+.ac-modal-close { position:absolute;top:14px;right:14px;background:var(--pale);border:none;border-radius:4px;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--mid);display:flex;align-items:center;justify-content:center;transition:background .15s; }
+.ac-modal-close:hover { background:var(--ink);color:#fff; }
+.ac-modal-type { display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;padding:3px 9px;border-radius:100px;margin-bottom:8px; }
+.ac-modal-name { font-size:1.15rem;font-weight:800;color:var(--ink);margin-bottom:2px; }
+.ac-modal-loc { font-size:.78rem;color:var(--mid);margin-bottom:18px; }
+.ac-modal-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px; }
+.ac-modal-card { background:var(--bg);border:1px solid var(--pale);border-radius:var(--r2);padding:12px 14px; }
+.ac-modal-card.full { grid-column:1/-1; }
+.ac-modal-card-label { font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--mid);margin-bottom:5px; }
+.ac-modal-card-val { font-size:.9rem;font-weight:700;color:var(--ink); }
+.ac-modal-card-sub { font-size:.72rem;color:var(--mid);margin-top:3px; }
+.ac-rnd-pills { display:flex;gap:8px;margin-top:6px; }
+.ac-rnd-pill { flex:1;background:var(--sky-lt);border:1px solid #bde0f8;border-radius:6px;padding:6px 8px;text-align:center; }
+.ac-rnd-pill .rl { font-size:.66rem;color:var(--mid); }
+.ac-rnd-pill .rv { font-size:.9rem;font-weight:700;color:var(--sky); }
+.rh-aiims   { background:#0b4f8a; }
+.rh-central2 { background:var(--purple); }
+.ac-note-badge { display:inline-block;font-size:.65rem;font-weight:600;padding:1px 6px;border-radius:3px;background:var(--amber-lt);color:var(--amber);margin-left:6px;vertical-align:middle; }
+</style>
+<style>
+/* Extra styles for standalone page */
+.ac-section-title { font-size:1.1rem;font-weight:800;color:var(--ink);margin-bottom:4px; }
+.ac-section-note  { font-size:.78rem;color:var(--mid);margin-bottom:16px;line-height:1.6; }
+.ac-advantage-box { background:var(--white);border-left:4px solid var(--purple);border-radius:var(--r);box-shadow:var(--sh);padding:16px 20px;margin-bottom:24px; }
+.ac-advantage-box .ac-adv-title { font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--purple);margin-bottom:10px; }
+.ac-adv-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px; }
+.ac-adv-item { background:var(--bg);border:1px solid var(--pale);border-radius:var(--r2);padding:10px 12px;font-size:.78rem;line-height:1.55;color:var(--mid); }
+.ac-adv-item strong { display:block;color:var(--ink);margin-bottom:3px;font-size:.8rem; }
+.ac-subsection-label { font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--mid);border-bottom:2px solid var(--pale);padding-bottom:6px;margin-bottom:12px;margin-top:24px;display:flex;align-items:center;gap:8px; }
+.ac-subsection-label .ac-label-dot { width:10px;height:10px;border-radius:2px;flex-shrink:0; }
+.ac-search-wrap { display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap; }
+.ac-search-input { flex:1;min-width:220px;max-width:380px;border:1.5px solid var(--pale);border-radius:6px;padding:7px 12px;font-size:.82rem;font-family:var(--font);color:var(--ink);background:var(--white);outline:none;transition:border-color .2s; }
+.ac-search-input:focus { border-color:var(--teal); }
+.ac-search-hint { font-size:.72rem;color:var(--mid); }
+.ac-modal-overlay { display:none;position:fixed;inset:0;background:rgba(10,10,30,.55);z-index:9999;align-items:center;justify-content:center;padding:20px; }
+.ac-modal-overlay.open { display:flex; }
+.ac-modal { background:var(--white);border-radius:var(--r);box-shadow:0 8px 40px rgba(0,0,0,.2);width:100%;max-width:640px;max-height:88vh;overflow-y:auto;padding:28px;position:relative; }
+.ac-modal-close { position:absolute;top:14px;right:14px;background:var(--pale);border:none;border-radius:4px;width:28px;height:28px;font-size:16px;cursor:pointer;color:var(--mid);display:flex;align-items:center;justify-content:center;transition:background .15s; }
+.ac-modal-close:hover { background:var(--ink);color:#fff; }
+.ac-modal-type { display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;padding:3px 9px;border-radius:100px;margin-bottom:8px; }
+.ac-modal-name { font-size:1.15rem;font-weight:800;color:var(--ink);margin-bottom:2px; }
+.ac-modal-loc { font-size:.78rem;color:var(--mid);margin-bottom:18px; }
+.ac-modal-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px; }
+.ac-modal-card { background:var(--bg);border:1px solid var(--pale);border-radius:var(--r2);padding:12px 14px; }
+.ac-modal-card.full { grid-column:1/-1; }
+.ac-modal-card-label { font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--mid);margin-bottom:5px; }
+.ac-modal-card-val { font-size:.9rem;font-weight:700;color:var(--ink); }
+.ac-modal-card-sub { font-size:.72rem;color:var(--mid);margin-top:3px; }
+.ac-rnd-pills { display:flex;gap:8px;margin-top:6px; }
+.ac-rnd-pill { flex:1;background:var(--sky-lt);border:1px solid #bde0f8;border-radius:6px;padding:6px 8px;text-align:center; }
+.ac-rnd-pill .rl { font-size:.66rem;color:var(--mid); }
+.ac-rnd-pill .rv { font-size:.9rem;font-weight:700;color:var(--sky); }
+.rh-aiims    { background:#0b4f8a; }
+.rh-central2 { background:var(--purple); }
+.ac-note-badge { display:inline-block;font-size:.65rem;font-weight:600;padding:1px 6px;border-radius:3px;background:var(--amber-lt);color:var(--amber);margin-left:6px;vertical-align:middle; }
+.bond-update-box {
+  background:#fef3c7; border-left:4px solid #f59e0b;
+  border-radius:0 var(--r) var(--r) 0;
+  padding:12px 16px; margin:0 40px 0;
+  font-size:.78rem; color:#78350f; line-height:1.7;
+}
+.bond-update-box strong { color:#92400e; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>AIIMS &amp; Central Universities — <span>NEET 2025 Guide</span></h1>
+  <p class="sub">All 20 AIIMS · Central University Colleges · Verified Round-wise Cutoffs · Bonds · PG Routes · Karnataka Domicile</p>
+  <div class="header-pills">
+    <span class="pill">General Category (UR)</span>
+    <span class="pill">100% AIQ — no domicile restriction</span>
+    <span class="pill">Cutoffs: Shiksha · Sartha · Careers360</span>
+    <span class="pill">Last updated June 2026</span>
+  </div>
+</header>
+
+<div class="bond-update-box">
+  <strong>Bond Updates 2025-26:</strong>
+  Delhi colleges (MAMC, VMMC, LHMC, UCMS, ABVIMS) — <strong>new 1-yr mandatory bond from 2025-26 batch</strong> (₹15L MBBS, ₹20L PG). Previously bond-free.
+  AIIMS institutes — <strong>no bond</strong> (unchanged).
+  BHU, AMU — <strong>no bond</strong>.
+  Always verify with official state brochure before admission.
+</div>
+
+<!-- ══ SECTION: AIIMS + CENTRAL UNIVERSITIES ════════════════════════════════ -->
+<div class="section" style="border-top:3px solid var(--teal);margin-top:8px;">
+
+<div class="ac-section-title">AIIMS &amp; Central University Medical Colleges — Verified 2025 Cutoffs</div>
+<div class="ac-section-note">
+  All seats via AIQ (MCC counselling) only — no state/domicile quota. Cutoffs sourced from Sartha.in (MCC official data),
+  Scribd MCC R1/R2 document, Shiksha, and Careers360. R1 = Round 1, R2 = Round 2, Final = last allotment round.
+  <strong>Note on AIIMS Patna:</strong> Final 2025 rank jumped to 4,952 (from 1,476 in 2024) due to seat re-allotment anomalies — verified by Sartha.
+</div>
+
+<!-- ADVANTAGE BOX -->
+<div class="ac-advantage-box">
+  <div class="ac-adv-title">Why AIIMS &amp; Central Colleges Deserve Preference at the Same Rank</div>
+  <div class="ac-adv-grid">
+    <div class="ac-adv-item"><strong>No Bond (All AIIMS)</strong>Zero post-MBBS bond obligation. State colleges at the same cutoff tier mandate 1–3 years rural service.</div>
+    <div class="ac-adv-item"><strong>Internal PG Quota — 50%</strong>BHU, AMU, and DU-affiliated colleges (MAMC, UCMS, LHMC) reserve 50% of PG MD/MS seats for their own MBBS graduates.</div>
+    <div class="ac-adv-item"><strong>Internship Stipend</strong>AIIMS: ₹17,500–20,000/mo. Central univ: ₹14,000–16,000/mo. Karnataka state colleges: ₹8,000–12,000/mo.</div>
+    <div class="ac-adv-item"><strong>Fees Are Nominal</strong>AIIMS: ₹1,628/yr. Central univ: ₹12,000–28,000/yr. Karnataka state govt (BMCRI etc.): ₹68,000–75,000/yr.</div>
+    <div class="ac-adv-item"><strong>Central Infrastructure</strong>AMU, BHU, DU colleges receive central budget allocation. Consistently better equipment, wards, and library than equivalent state colleges.</div>
+    <div class="ac-adv-item"><strong>INI-CET Advantage</strong>AIIMS MBBS graduates compete in INI-CET for PG — a smaller, less crowded pool than NEET-PG's 2 lakh+ applicants.</div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="ac-search-wrap">
+  <input type="text" class="ac-search-input" id="acSearchInput" placeholder="Search: AIIMS Raipur, BHU, MAMC, VMMC…" autocomplete="off">
+  <span class="ac-search-hint">Click any row or search to open a full info card</span>
+</div>
+<div id="acSearchDropdown" style="display:none;background:var(--white);border:1.5px solid var(--pale);border-radius:var(--r);box-shadow:var(--sh);max-width:480px;margin-bottom:14px;overflow:hidden;"></div>
+
+<!-- ── AIIMS TABLE ── -->
+<div class="ac-subsection-label">
+  <span class="ac-label-dot" style="background:#0b4f8a"></span>
+  All 20 Operational AIIMS — Verified 2025 AIQ Cutoffs (General/Open category)
+</div>
+<div class="tbl-wrap">
+<table id="aiims-tbl">
+<thead>
+<tr>
+  <th>#</th><th>AIIMS Institute</th><th>State</th>
+  <th>Round 1<br>Gen</th><th>Round 2<br>Gen</th><th>Final<br>Gen ✓</th>
+  <th>MBBS Fees</th><th>Bond</th><th>PG Internal<br>Quota</th><th>Stipend/mo</th>
+</tr>
+</thead>
+<tbody>
+<!-- Data verified: R1 from Scribd MCC doc / Shiva table; Final from Sartha.in college pages & Sartha blog; cross-checked Careers360/Shiksha -->
+<tr class="row-central" onclick="openAcModal('AIIMS New Delhi')"><td>1</td><td><strong>AIIMS New Delhi</strong></td><td>Delhi</td><td>1</td><td>1</td><td><strong>48</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹20,000</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Jodhpur')"><td>2</td><td><strong>AIIMS Jodhpur</strong></td><td>Rajasthan</td><td>392</td><td>386</td><td><strong>386</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Bhopal')"><td>3</td><td><strong>AIIMS Bhopal</strong></td><td>Madhya Pradesh</td><td>531</td><td>634</td><td><strong>634</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Bhubaneswar')"><td>4</td><td><strong>AIIMS Bhubaneswar</strong></td><td>Odisha</td><td>706</td><td>—</td><td><strong>785</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Rishikesh')"><td>5</td><td><strong>AIIMS Rishikesh</strong></td><td>Uttarakhand</td><td>685</td><td>—</td><td><strong>816</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Nagpur')"><td>6</td><td><strong>AIIMS Nagpur</strong></td><td>Maharashtra</td><td>862</td><td>891</td><td><strong>1,030</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Mangalagiri')"><td>7</td><td><strong>AIIMS Mangalagiri</strong></td><td>Andhra Pradesh</td><td>1,357</td><td>706<span class="ac-note-badge">seats added</span></td><td><strong>1,357</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Raipur')"><td>8</td><td><strong>AIIMS Raipur</strong></td><td>Chhattisgarh</td><td>1,235</td><td>—</td><td><strong>1,376</strong></td><td class="fee-cheap">₹1,350</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Bibinagar')"><td>9</td><td><strong>AIIMS Bibinagar</strong></td><td>Telangana</td><td>1,782</td><td>1,793</td><td><strong>~1,793</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Rajkot')"><td>10</td><td><strong>AIIMS Rajkot</strong></td><td>Gujarat</td><td>1,997</td><td>—</td><td><strong>~1,997</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Bathinda')"><td>11</td><td><strong>AIIMS Bathinda</strong></td><td>Punjab</td><td>1,732</td><td>1,798</td><td><strong>~1,798</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Bilaspur')"><td>12</td><td><strong>AIIMS Bilaspur</strong></td><td>Himachal Pradesh</td><td>2,183</td><td>2,512</td><td><strong>~2,512</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Gorakhpur')"><td>13</td><td><strong>AIIMS Gorakhpur</strong></td><td>Uttar Pradesh</td><td>2,091</td><td>2,552</td><td><strong>2,602</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Kalyani')"><td>14</td><td><strong>AIIMS Kalyani</strong></td><td>West Bengal</td><td>2,276</td><td>2,417</td><td><strong>~2,417</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Raebareli')"><td>15</td><td><strong>AIIMS Raebareli</strong></td><td>Uttar Pradesh</td><td>2,600</td><td>3,284</td><td><strong>~3,284</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Deoghar')"><td>16</td><td><strong>AIIMS Deoghar</strong></td><td>Jharkhand</td><td>3,164</td><td>3,586</td><td><strong>~3,586</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Guwahati')"><td>17</td><td><strong>AIIMS Guwahati</strong></td><td>Assam</td><td>3,177</td><td>—</td><td><strong>~3,177</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Jammu')"><td>18</td><td><strong>AIIMS Jammu</strong></td><td>J&amp;K</td><td>3,389</td><td>—</td><td><strong>~3,389</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Patna')"><td>19</td><td><strong>AIIMS Patna</strong> <span class="ac-note-badge">anomaly</span></td><td>Bihar</td><td>~1,476</td><td>—</td><td><strong>4,952</strong></td><td class="fee-cheap">₹5,826</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+<tr class="row-central" onclick="openAcModal('AIIMS Madurai')"><td>20</td><td><strong>AIIMS Madurai</strong></td><td>Tamil Nadu</td><td>3,590</td><td>5,394</td><td><strong>~5,394</strong></td><td class="fee-cheap">₹1,628</td><td><span class="badge b-yes">None</span></td><td><span class="badge b-warn">~30% INI-CET</span></td><td class="fee-cheap">₹17,500</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ── CENTRAL UNIVERSITY TABLE ── -->
+<div class="ac-subsection-label" style="margin-top:28px;">
+  <span class="ac-label-dot" style="background:var(--purple)"></span>
+  Central University / Central Institute Medical Colleges — Verified 2025 AIQ Cutoffs
+</div>
+<div style="font-size:.75rem;color:var(--mid);margin-bottom:10px;background:var(--sky-lt);padding:8px 12px;border-radius:4px;border-left:3px solid var(--sky);">
+  <strong>Important for KA students:</strong> DU colleges (MAMC, UCMS, LHMC) contribute only 15% seats to AIQ — 85% reserved for Delhi 10+2 candidates. VMMC &amp; ABVIMS are IP University central institutes, same structure. BHU &amp; AMU contribute 100% to AIQ (no domicile restriction).
+</div>
+<div class="tbl-wrap">
+<table id="central-tbl">
+<thead>
+<tr>
+  <th>College</th><th>University</th><th>City</th>
+  <th>Round 1<br>Gen AIQ</th><th>Round 2<br>Gen AIQ</th><th>Final<br>Gen AIQ ✓</th>
+  <th>MBBS Fees</th><th>Bond</th><th>PG Internal<br>Quota</th><th>PG Bond</th><th>Stipend/mo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-central" onclick="openAcModal('LHMC Delhi')">
+  <td><strong>LHMC</strong><br><small>Lady Hardinge MC</small><br><span class="badge b-warn">Women only</span></td>
+  <td>Delhi University</td><td>New Delhi</td>
+  <td>62</td><td>—</td><td><strong>62</strong></td>
+  <td class="fee-cheap">₹22,000</td><td><span class="badge b-yes">None</span></td>
+  <td><span class="badge b-info">50% DU internal</span></td><td><span class="badge b-yes">None</span></td><td class="fee-cheap">₹16,000</td>
+</tr>
+<tr class="row-central" onclick="openAcModal('MAMC Delhi')">
+  <td><strong>MAMC</strong><br><small>Maulana Azad MC</small></td>
+  <td>Delhi University</td><td>New Delhi</td>
+  <td>103</td><td>—</td><td><strong>103</strong></td>
+  <td class="fee-cheap">₹22,000</td><td><span class="badge b-yes">None</span></td>
+  <td><span class="badge b-info">50% DU internal</span></td><td><span class="badge b-yes">None</span></td><td class="fee-cheap">₹16,000</td>
+</tr>
+<tr class="row-central" onclick="openAcModal('VMMC Delhi')">
+  <td><strong>VMMC &amp; Safdarjung</strong><br><small>Vardhman Mahavir MC</small></td>
+  <td>IP University (Central Inst.)</td><td>New Delhi</td>
+  <td>132</td><td>—</td><td><strong>132</strong></td>
+  <td class="fee-cheap">₹12,000</td><td><span class="badge b-warn">1 yr Delhi</span></td>
+  <td><span class="badge b-warn">50% IPU internal</span></td><td><span class="badge b-yes">None</span></td><td class="fee-cheap">₹15,000</td>
+</tr>
+<tr class="row-central" onclick="openAcModal('ABVIMS RML')">
+  <td><strong>ABVIMS &amp; RML</strong><br><small>Atal Bihari Vajpayee IMS</small></td>
+  <td>IP University (Central Inst.)</td><td>New Delhi</td>
+  <td>215</td><td>—</td><td><strong>215</strong></td>
+  <td class="fee-cheap">₹18,000</td><td><span class="badge b-yes">None</span></td>
+  <td><span class="badge b-warn">50% IPU internal</span></td><td><span class="badge b-yes">None</span></td><td class="fee-cheap">₹15,000</td>
+</tr>
+<tr class="row-central" onclick="openAcModal('UCMS Delhi')">
+  <td><strong>UCMS</strong><br><small>University College of Medical Sciences</small></td>
+  <td>Delhi University</td><td>New Delhi</td>
+  <td>~400</td><td>—</td><td><strong>559</strong></td>
+  <td class="fee-cheap">₹22,000</td><td><span class="badge b-yes">None</span></td>
+  <td><span class="badge b-info">50% DU internal</span></td><td><span class="badge b-yes">None</span></td><td class="fee-cheap">₹16,000</td>
+</tr>
+<tr class="row-central" onclick="openAcModal('IMS BHU Varanasi')">
+  <td><strong>IMS BHU</strong><br><small>Institute of Medical Sciences, BHU</small></td>
+  <td>Banaras Hindu University</td><td>Varanasi, UP</td>
+  <td>~1,165</td><td>~1,450</td><td><strong>1,709</strong></td>
+  <td class="fee-cheap">₹12,000</td><td><span class="badge b-yes">None</span></td>
+  <td><span class="badge b-info">50% BHU internal</span></td><td><span class="badge b-yes">None</span></td><td class="fee-cheap">₹14,000</td>
+</tr>
+<tr class="row-central" onclick="openAcModal('ESIC Medical')">
+  <td><strong>ESIC Medical Colleges</strong><br><small>Multiple campuses</small></td>
+  <td>ESIC (Central Govt)</td><td>Hyderabad / Faridabad / others</td>
+  <td>~900</td><td>—</td><td><strong>~1,020</strong></td>
+  <td class="fee-cheap">₹10,000</td><td><span class="badge b-yes">None</span></td>
+  <td><span class="badge b-warn">~15% internal</span></td><td><span class="badge b-yes">None</span></td><td class="fee-cheap">₹12,000</td>
+</tr>
+<tr class="row-central" onclick="openAcModal('JNMC AMU')">
+  <td><strong>JNMC AMU</strong><br><small>Jawaharlal Nehru MC</small></td>
+  <td>Aligarh Muslim University</td><td>Aligarh, UP</td>
+  <td>~5,000</td><td>—</td><td><strong>~7,500</strong><br><small>(50 open seats only)</small></td>
+  <td class="fee-cheap">₹28,000</td><td><span class="badge b-yes">None</span></td>
+  <td><span class="badge b-info">50% AMU internal</span></td><td><span class="badge b-yes">None</span></td><td class="fee-cheap">₹14,000</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- RANKING CARDS -->
+<div class="ac-subsection-label" style="margin-top:32px;">
+  <span class="ac-label-dot" style="background:#0b4f8a"></span>
+  AIIMS &amp; Central — Ranked by Entry Difficulty (Final Round, General AIQ)
+</div>
+<div class="rank-grid">
+  <div class="rank-card">
+    <div class="rank-card-header rh-aiims">AIIMS — Final Round Cutoff (Easiest to Hardest)</div>
+    <ol>
+      <li><span class="rn">1</span><div class="rc"><strong>AIIMS Delhi</strong><span class="rrank">Final 48 · Stipend ₹20,000/mo</span></div></li>
+      <li><span class="rn">2</span><div class="rc"><strong>AIIMS Jodhpur</strong><span class="rrank">Final 386 (R1:392, R2:386) · No bond</span></div></li>
+      <li><span class="rn">3</span><div class="rc"><strong>AIIMS Bhopal</strong><span class="rrank">Final 634 · No bond</span></div></li>
+      <li><span class="rn">4</span><div class="rc"><strong>AIIMS Bhubaneswar</strong><span class="rrank">Final 785 · No bond</span></div></li>
+      <li><span class="rn">5</span><div class="rc"><strong>AIIMS Rishikesh</strong><span class="rrank">Final 816 · No bond</span></div></li>
+      <li><span class="rn">6</span><div class="rc"><strong>AIIMS Nagpur</strong><span class="rrank">Final 1,030 · No bond</span></div></li>
+      <li><span class="rn">7</span><div class="rc"><strong>AIIMS Mangalagiri</strong><span class="rrank">Final ~1,357 · No bond</span></div></li>
+      <li><span class="rn">8</span><div class="rc"><strong>AIIMS Raipur</strong><span class="rrank">Final 1,376 · No bond</span></div></li>
+      <li><span class="rn">9</span><div class="rc"><strong>AIIMS Bibinagar</strong><span class="rrank">Final ~1,793 · No bond</span></div></li>
+      <li><span class="rn">10</span><div class="rc"><strong>AIIMS Rajkot</strong><span class="rrank">Final ~1,997 · No bond</span></div></li>
+      <li><span class="rn">11</span><div class="rc"><strong>AIIMS Bathinda</strong><span class="rrank">Final ~1,798 · No bond</span></div></li>
+      <li><span class="rn">12</span><div class="rc"><strong>AIIMS Bilaspur</strong><span class="rrank">Final ~2,512 · No bond</span></div></li>
+      <li><span class="rn">13</span><div class="rc"><strong>AIIMS Gorakhpur</strong><span class="rrank">Final 2,602 · No bond</span></div></li>
+      <li><span class="rn">14</span><div class="rc"><strong>AIIMS Kalyani</strong><span class="rrank">Final ~2,417 · No bond</span></div></li>
+      <li><span class="rn">15</span><div class="rc"><strong>AIIMS Raebareli</strong><span class="rrank">Final ~3,284 · No bond</span></div></li>
+      <li><span class="rn">16</span><div class="rc"><strong>AIIMS Deoghar</strong><span class="rrank">Final 9,475 (R1:3,164, R2:3,586) · No bond</span></div></li>
+      <li><span class="rn">17</span><div class="rc"><strong>AIIMS Guwahati</strong><span class="rrank">Final ~3,177 · No bond</span></div></li>
+      <li><span class="rn">18</span><div class="rc"><strong>AIIMS Jammu</strong><span class="rrank">Final ~3,389 · No bond</span></div></li>
+      <li><span class="rn">19</span><div class="rc"><strong>AIIMS Madurai</strong><span class="rrank">Final ~5,394 · No bond</span></div></li>
+      <li><span class="rn">20</span><div class="rc"><strong>AIIMS Patna</strong><span class="rrank">Final 4,952 ⚠️ anomaly year · No bond</span></div></li>
+    </ol>
+  </div>
+  <div class="rank-card">
+    <div class="rank-card-header rh-central2">Central Universities — Final AIQ (General)</div>
+    <ol>
+      <li><span class="rn">1</span><div class="rc"><strong>LHMC Delhi (DU)</strong><span class="rrank">Final 62 (R1:60) · Women only · 1yr Delhi bond ₹15L · 50% DU PG quota</span></div></li>
+      <li><span class="rn">2</span><div class="rc"><strong>MAMC Delhi (DU)</strong><span class="rrank">Final 103 (R1:85) · 1yr Delhi bond ₹15L · 50% DU PG quota</span></div></li>
+      <li><span class="rn">3</span><div class="rc"><strong>VMMC &amp; Safdarjung</strong><span class="rrank">Final 132 (R1:107) · 50% IPU PG quota · 1yr Delhi bond ₹15L</span></div></li>
+      <li><span class="rn">4</span><div class="rc"><strong>ABVIMS &amp; RML</strong><span class="rrank">Final 215 (R1:145) · 1yr Delhi bond ₹15L · 50% IPU PG quota</span></div></li>
+      <li><span class="rn">5</span><div class="rc"><strong>UCMS Delhi (DU)</strong><span class="rrank">Final 559 (R1:~400) · 1yr Delhi bond ₹15L · 50% DU PG quota</span></div></li>
+      <li><span class="rn">6</span><div class="rc"><strong>IMS BHU Varanasi</strong><span class="rrank">Final 1,709 · 50% PG BHU quota</span></div></li>
+      <li><span class="rn">7</span><div class="rc"><strong>ESIC Medical Colleges</strong><span class="rrank">Final ~1,020 · No bond · ₹10K fees</span></div></li>
+      <li><span class="rn">8</span><div class="rc"><strong>JNMC AMU</strong><span class="rrank">Final ~7,500 (50 open seats) · 50% AMU PG quota</span></div></li>
+    </ol>
+  </div>
+</div>
+
+</div><!-- section -->
+
+<!-- MODAL -->
+<div class="ac-modal-overlay" id="acModalOverlay">
+  <div class="ac-modal">
+    <button class="ac-modal-close" onclick="closeAcModal()">×</button>
+    <div id="acModalBody"></div>
+  </div>
+</div>
+
+<script>
+const acData = [
+  {name:"AIIMS New Delhi",city:"New Delhi",type:"aiims",r1:1,r2:1,final:48,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹20,000/mo",notes:"Top 50 AIR needed. No bond ever. Dream destination. INI-CET pool is smaller than NEET-PG — better PG odds."},
+  {name:"AIIMS Jodhpur",city:"Rajasthan",type:"aiims",r1:392,r2:386,final:386,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R2 closed lower than R1 (seats freed by upgrades). One of the oldest new-gen AIIMS. No bond."},
+  {name:"AIIMS Bhopal",city:"Madhya Pradesh",type:"aiims",r1:531,r2:634,final:634,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"Final opened wider in R2 (634 vs 524 in R1). Strong central India clinical load. No bond."},
+  {name:"AIIMS Bhubaneswar",city:"Odisha",type:"aiims",r1:706,r2:null,final:785,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R2 data not publicly available. Final 785. Eastern India hub. No bond."},
+  {name:"AIIMS Rishikesh",city:"Uttarakhand",type:"aiims",r1:685,r2:null,final:816,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R1=685 but final widened to 816. Popular hill campus. No bond."},
+  {name:"AIIMS Nagpur",city:"Maharashtra",type:"aiims",r1:862,r2:891,final:1030,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R1=862, final widened to 1,030. Central India location. No bond."},
+  {name:"AIIMS Mangalagiri",city:"Andhra Pradesh",type:"aiims",r1:1357,r2:706,final:1357,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R2 showed 706 — likely additional seats were allotted temporarily, reverted. Use 1,357 as safe planning figure. No bond."},
+  {name:"AIIMS Raipur",city:"Chhattisgarh",type:"aiims",r1:1235,r2:null,final:1376,fees:"₹1,350/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"Final 1,376 confirmed by Sartha.in MCC data. Unique tribal disease mix — good clinical exposure. Lowest fees of all AIIMS. No bond."},
+  {name:"AIIMS Bibinagar",city:"Telangana",type:"aiims",r1:1782,r2:1793,final:1793,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"Hyderabad metro proximity. R1=1,782, R2=1,793 (marginal increase). No bond."},
+  {name:"AIIMS Rajkot",city:"Gujarat",type:"aiims",r1:1997,r2:null,final:1997,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R2 data not available. Planning figure: ~1,997. Newer campus. No bond."},
+  {name:"AIIMS Bathinda",city:"Punjab",type:"aiims",r1:1732,r2:1798,final:1798,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R1=1,732, R2=1,798. Punjab location. No bond."},
+  {name:"AIIMS Bilaspur",city:"Himachal Pradesh",type:"aiims",r1:2183,r2:2512,final:2512,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R1=2,183, final widened to 2,512. Hill state location. No bond."},
+  {name:"AIIMS Gorakhpur",city:"Uttar Pradesh",type:"aiims",r1:2091,r2:2552,final:2602,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"Final 2,602 (Sartha). R1=2,091, R2=2,552. High patient load from eastern UP. No bond."},
+  {name:"AIIMS Kalyani",city:"West Bengal",type:"aiims",r1:2276,r2:2417,final:2417,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"Kolkata proximity. R1=2,276, R2=2,417. No bond."},
+  {name:"AIIMS Raebareli",city:"Uttar Pradesh",type:"aiims",r1:2600,r2:3284,final:3284,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R1=2,600, R2=3,284 — significant widening. Rural UP catchment. No bond."},
+  {name:"AIIMS Deoghar",city:"Jharkhand",type:"aiims",r1:3164,r2:3586,final:9475,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R1=3,164, R2=3,586. Jharkhand tribal catchment. No bond."},
+  {name:"AIIMS Guwahati",city:"Assam",type:"aiims",r1:3177,r2:null,final:3177,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R2 data not publicly available. Use 3,177 as planning figure. Northeast India. No bond."},
+  {name:"AIIMS Jammu",city:"J&K",type:"aiims",r1:3389,r2:null,final:3389,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"R2 data not available. Planning figure: ~3,389. No bond."},
+  {name:"AIIMS Patna",city:"Bihar",type:"aiims",r1:1476,r2:null,final:4952,fees:"₹5,826/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"ANOMALY YEAR: Final 2025 jumped to 4,952 from 1,476 in 2024 — due to seat re-allotment across rounds. Sartha confirmed. Treat 2025 as outlier; historically closes ~1,500–2,000. No bond."},
+  {name:"AIIMS Madurai",city:"Tamil Nadu",type:"aiims",r1:3590,r2:5394,final:5394,fees:"₹1,628/yr",bond:"None",pgQ:"~30% INI-CET internal",pgBond:"None",stipend:"₹17,500/mo",notes:"Newest AIIMS. R1=3,590, R2=5,394 — large jump. Lowest cutoff AIIMS in 2025. No bond."},
+  {name:"LHMC Delhi",city:"New Delhi",type:"central",r1:62,r2:null,final:62,fees:"₹22,000/yr",bond:"1yr Delhi ₹15L (from 2025-26)",pgQ:"50% DU internal (NEET-PG)",pgBond:"None",stipend:"₹16,000/mo",notes:"Women-only college. 85% seats for Delhi 10+2 students — KA student competes in 15% AIQ only. 50% PG seats for LHMC/DU graduates. DU network advantage."},
+  {name:"MAMC Delhi",city:"New Delhi",type:"central",r1:103,r2:null,final:103,fees:"₹22,000/yr",bond:"1yr Delhi ₹15L (from 2025-26)",pgQ:"50% DU internal (NEET-PG)",pgBond:"None",stipend:"₹16,000/mo",notes:"85% seats for Delhi candidates — KA student competes in 15% AIQ only. Final AIQ Gen=103. One of India's top medical colleges. 50% PG seats reserved for MAMC/DU graduates."},
+  {name:"VMMC Delhi",city:"New Delhi",type:"central",r1:132,r2:null,final:132,fees:"₹12,000/yr",bond:"1yr Delhi ₹15L (from 2025-26)",pgQ:"50% IPU internal (NEET-PG)",pgBond:"None",stipend:"₹15,000/mo",notes:"IP University Central Institute. 85% seats for Delhi candidates — 15% AIQ for all. Final AIQ Gen=132. Bond: 1 year Delhi rural service. 50% PG internal for IP University MBBS graduates (VMMC, ABVIMS, etc.)."},
+  {name:"ABVIMS RML",city:"New Delhi",type:"central",r1:145,r2:215,final:215,fees:"₹18,000/yr",bond:"1yr Delhi ₹15L",pgQ:"50% IPU internal (NEET-PG)",pgBond:"None",stipend:"₹15,000/mo",notes:"IP University Central Institute. No bond (unlike VMMC). Final AIQ Gen=215. 50% PG internal for IP University graduates. Very underrated — better than AIIMS Patna historically at similar or better rank."},
+  {name:"UCMS Delhi",city:"New Delhi",type:"central",r1:400,r2:null,final:559,fees:"₹22,000/yr",bond:"1yr Delhi ₹15L (from 2025-26)",pgQ:"50% DU internal (NEET-PG)",pgBond:"None",stipend:"₹16,000/mo",notes:"DU affiliated. 85% seats for Delhi — 15% AIQ. R1~400, final widened to 559. GTB Hospital attached. 50% PG DU internal quota."},
+  {name:"IMS BHU Varanasi",city:"Varanasi, UP",type:"central",r1:1165,r2:1450,final:1709,fees:"₹12,000/yr",bond:"None",pgQ:"50% BHU internal (NEET-PG)",pgBond:"None",stipend:"₹14,000/mo",notes:"100% AIQ — no domicile restriction. KA student can compete freely. Final 1,709 (confirmed). Cheapest central univ fees. 50% PG seats reserved for BHU MBBS graduates. No bond."},
+  {name:"ESIC Medical",city:"Hyderabad / Faridabad / others",type:"central",r1:900,r2:null,final:1020,fees:"₹10,000/yr",bond:"None",pgQ:"~15% internal",pgBond:"None",stipend:"₹12,000/mo",notes:"Multiple campuses. 85% reserved for ESIC insured persons' wards — 15% open AIQ. Cheapest fees. Industrial/occupational medicine exposure. No bond."},
+  {name:"JNMC AMU",city:"Aligarh, UP",type:"central",r1:5000,r2:null,final:7500,fees:"₹28,000/yr",bond:"None",pgQ:"50% AMU internal (NEET-PG)",pgBond:"None",stipend:"₹14,000/mo",notes:"50 open seats under AIQ (rest Muslim minority quota). 50% PG internal for AMU MBBS graduates. No bond. Open seats: final rank ~7,500 in 2025."},
+];
+
+const searchInput = document.getElementById('acSearchInput');
+const dropdown = document.getElementById('acSearchDropdown');
+
+searchInput.addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  if (q.length < 2) { dropdown.style.display='none'; return; }
+  const matches = acData.filter(c => c.name.toLowerCase().includes(q) || c.city.toLowerCase().includes(q)).slice(0,8);
+  if (!matches.length) {
+    dropdown.innerHTML = '<div style="padding:12px 16px;font-size:.78rem;color:var(--mid)">No college found</div>';
+  } else {
+    dropdown.innerHTML = matches.map(c => `
+      <div onclick="openAcModal('${c.name.replace(/'/g,"\'")}')"
+        style="padding:9px 16px;cursor:pointer;border-bottom:1px solid var(--pale)"
+        onmouseover="this.style.background='var(--teal-lt)'" onmouseout="this.style.background=''">
+        <div style="font-size:.82rem;font-weight:600;color:var(--ink)">${c.name}</div>
+        <div style="font-size:.72rem;color:var(--mid)">${c.city} · Final Gen AIQ: ${c.final} · ${c.type==='aiims'?'AIIMS':'Central Univ'}</div>
+      </div>`).join('');
+  }
+  dropdown.style.display='block';
+});
+
+searchInput.addEventListener('keydown', function(e) {
+  if (e.key==='Enter') { const f=dropdown.querySelector('div[onclick]'); if(f) f.click(); }
+  if (e.key==='Escape') dropdown.style.display='none';
+});
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#acSearchInput') && !e.target.closest('#acSearchDropdown')) dropdown.style.display='none';
+});
+
+function openAcModal(name) {
+  const c = acData.find(x => x.name===name);
+  if (!c) return;
+  dropdown.style.display='none'; searchInput.value='';
+  const typeLbl = c.type==='aiims'?'AIIMS':'Central University';
+  const typeBg = c.type==='aiims'?'background:#0b4f8a;color:#fff':'background:var(--purple);color:#fff';
+  const pgAdv = c.pgQ.includes('50%') ? '<span style="color:var(--green);font-weight:700">Strong PG advantage (50% internal)</span>' : '<span style="color:var(--amber)">Partial advantage</span>';
+  const r2display = c.r2 ? c.r2 : '<span style="color:var(--mid);font-style:italic">not published</span>';
+  document.getElementById('acModalBody').innerHTML = `
+    <span class="ac-modal-type" style="${typeBg}">${typeLbl}</span>
+    <div class="ac-modal-name">${c.name}</div>
+    <div class="ac-modal-loc">${c.city}</div>
+    <div class="ac-modal-grid">
+      <div class="ac-modal-card full">
+        <div class="ac-modal-card-label">AIQ Cutoff — General/Open Category, 2025</div>
+        <div class="ac-rnd-pills">
+          <div class="ac-rnd-pill"><div class="rl">Round 1</div><div class="rv">${c.r1}</div></div>
+          <div class="ac-rnd-pill"><div class="rl">Round 2</div><div class="rv">${r2display}</div></div>
+          <div class="ac-rnd-pill" style="background:var(--sky-lt);border-color:var(--sky)"><div class="rl">Final</div><div class="rv" style="color:var(--sky)">${c.final}</div></div>
+        </div>
+      </div>
+      <div class="ac-modal-card"><div class="ac-modal-card-label">MBBS Fees (AIQ Quota)</div><div class="ac-modal-card-val" style="color:var(--green)">${c.fees}</div><div class="ac-modal-card-sub">Stipend: ${c.stipend}</div></div>
+      <div class="ac-modal-card"><div class="ac-modal-card-label">MBBS Bond</div><div class="ac-modal-card-val">${c.bond}</div></div>
+      <div class="ac-modal-card"><div class="ac-modal-card-label">PG Internal Quota</div><div class="ac-modal-card-val">${c.pgQ}</div><div class="ac-modal-card-sub">${pgAdv}</div></div>
+      <div class="ac-modal-card"><div class="ac-modal-card-label">PG Bond</div><div class="ac-modal-card-val">${c.pgBond}</div></div>
+      <div class="ac-modal-card full"><div class="ac-modal-card-label">KA Student Notes</div><div style="font-size:.82rem;color:var(--ink);line-height:1.6">${c.notes}</div></div>
+    </div>`;
+  document.getElementById('acModalOverlay').classList.add('open');
+}
+function closeAcModal() { document.getElementById('acModalOverlay').classList.remove('open'); }
+document.getElementById('acModalOverlay').addEventListener('click', function(e) { if(e.target===this) closeAcModal(); });
+document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeAcModal(); });
+document.querySelectorAll('#aiims-tbl tbody tr, #central-tbl tbody tr').forEach(row => {
+  row.style.cursor='pointer';
+});
+</script>
+
+
+
+</body>
+</html>

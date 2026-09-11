@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NIRF 2025 MBBS Guide — Karnataka General Domicile</title>
+<style>
+/* ── TOKENS ─────────────────────────────────────────────────────────────── */
+:root {
+  --ink:       #1a1a2e;
+  --ink2:      #2d2d4e;
+  --mid:       #5a5a8a;
+  --pale:      #e8e8f4;
+  --bg:        #f7f7fc;
+  --white:     #ffffff;
+
+  /* accent */
+  --teal:      #0d7e8a;
+  --teal-lt:   #e0f5f7;
+  --amber:     #d97706;
+  --amber-lt:  #fef3c7;
+  --red:       #be123c;
+  --red-lt:    #fee2e2;
+  --green:     #15803d;
+  --green-lt:  #dcfce7;
+  --sky:       #0369a1;
+  --sky-lt:    #e0f2fe;
+  --purple:    #7c3aed;
+  --purple-lt: #ede9fe;
+  --orange:    #c2410c;
+  --orange-lt: #ffedd5;
+
+  --r:  8px;
+  --r2: 4px;
+  --sh: 0 2px 8px rgba(0,0,0,.08);
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ── RESET / BASE ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 13px; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.55; }
+
+/* ── HEADER ──────────────────────────────────────────────────────────────── */
+.site-header {
+  background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6b 50%, #0d7e8a 100%);
+  color: #fff;
+  padding: 36px 40px 28px;
+}
+.site-header h1 {
+  font-size: 2rem; font-weight: 800; letter-spacing: -.5px;
+  line-height: 1.15;
+}
+.site-header h1 span { color: #7dd3e8; }
+.site-header .sub {
+  margin-top: 8px; font-size: .95rem; opacity: .85; font-weight: 400;
+}
+.header-pills { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.pill {
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 100px;
+  padding: 4px 14px; font-size: .78rem; color: #e8f8fc;
+}
+
+/* ── LEGEND BAR ──────────────────────────────────────────────────────────── */
+.legend-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--pale);
+  padding: 10px 40px;
+  display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center;
+  font-size: .78rem; color: var(--mid);
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-dot {
+  width: 11px; height: 11px; border-radius: 2px; flex-shrink: 0;
+}
+
+/* ── SECTION WRAPPER ─────────────────────────────────────────────────────── */
+.section { padding: 30px 40px; }
+.section + .section { padding-top: 0; }
+.section-title {
+  font-size: 1.05rem; font-weight: 700; color: var(--ink);
+  text-transform: uppercase; letter-spacing: .8px;
+  padding-bottom: 10px; border-bottom: 2px solid var(--teal);
+  margin-bottom: 18px;
+}
+.section-note {
+  font-size: .78rem; color: var(--mid);
+  background: var(--sky-lt); border-left: 3px solid var(--sky);
+  padding: 8px 12px; border-radius: 0 var(--r2) var(--r2) 0;
+  margin-bottom: 16px;
+}
+
+/* ── TABLE ───────────────────────────────────────────────────────────────── */
+.tbl-wrap { overflow-x: auto; border-radius: var(--r); box-shadow: var(--sh); }
+table {
+  width: 100%; border-collapse: collapse; font-size: .8rem;
+  background: var(--white);
+}
+thead tr { background: var(--ink); color: #fff; }
+thead th {
+  padding: 10px 10px; text-align: left; font-weight: 600;
+  font-size: .73rem; letter-spacing: .4px; white-space: nowrap;
+}
+tbody tr { border-bottom: 1px solid #f0f0f8; }
+tbody tr:hover { background: #f4f4fc; }
+tbody td {
+  padding: 9px 10px; vertical-align: top; line-height: 1.45;
+}
+
+/* row type colours */
+.row-central    { border-left: 3px solid var(--teal); }
+.row-ka-private { border-left: 3px solid var(--green); }
+.row-ka-deemed  { border-left: 3px solid var(--amber); }
+.row-state-other{ border-left: 3px solid var(--sky); }
+.row-private    { border-left: 3px solid var(--purple); }
+.row-no-mbbs    { border-left: 3px solid #ccc; background: #fafafa; color: var(--mid); }
+.row-extra      { border-left: 3px solid var(--orange); }
+
+/* badge helpers */
+.badge {
+  display: inline-block; padding: 2px 7px; border-radius: 100px;
+  font-size: .7rem; font-weight: 600; white-space: nowrap;
+}
+.b-yes   { background: var(--green-lt);  color: var(--green); }
+.b-no    { background: var(--red-lt);    color: var(--red); }
+.b-warn  { background: var(--amber-lt);  color: var(--amber); }
+.b-na    { background: var(--pale);      color: var(--mid); }
+.b-info  { background: var(--sky-lt);    color: var(--sky); }
+.b-kea   { background: var(--teal-lt);   color: var(--teal); }
+.b-mcc   { background: var(--purple-lt); color: var(--purple); }
+
+/* cutoff rounds mini-table */
+.rnd-table { border-collapse: collapse; font-size: .72rem; width: 100%; }
+.rnd-table td, .rnd-table th {
+  padding: 2px 5px; border: 1px solid #e8e8f4; white-space: nowrap;
+}
+.rnd-table th { background: #f0f0fa; font-weight: 600; }
+.rnd-na { color: #aaa; font-style: italic; }
+
+/* fee highlight */
+.fee-cheap  { color: var(--green);  font-weight: 600; }
+.fee-mid    { color: var(--amber);  font-weight: 600; }
+.fee-high   { color: var(--red);    font-weight: 600; }
+.fee-na     { color: var(--mid);    font-style: italic; }
+
+/* ── RANKING SECTION ──────────────────────────────────────────────────────── */
+.rank-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 16px;
+}
+.rank-card {
+  background: var(--white);
+  border-radius: var(--r);
+  box-shadow: var(--sh);
+  overflow: hidden;
+}
+.rank-card-header {
+  padding: 10px 14px 8px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .5px;
+  text-transform: uppercase; color: #fff;
+}
+.rh-central  { background: var(--teal); }
+.rh-delhi    { background: var(--sky); }
+.rh-ka       { background: var(--green); }
+.rh-state    { background: var(--purple); }
+.rh-deemed   { background: var(--amber); }
+.rank-card ol { padding: 0; margin: 0; list-style: none; }
+.rank-card ol li {
+  padding: 7px 14px;
+  border-bottom: 1px solid var(--pale);
+  font-size: .8rem;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.rank-card ol li:last-child { border-bottom: none; }
+.rn { flex-shrink: 0; width: 20px; font-weight: 700; color: var(--mid); font-size: .75rem; text-align: right; }
+.rc { flex: 1; }
+.rc strong { display: block; color: var(--ink); font-size: .82rem; }
+.rc .rrank { color: var(--teal); font-size: .72rem; }
+
+/* ── FOOTER ─────────────────────────────────────────────────────────────── */
+.footer {
+  background: var(--ink); color: rgba(255,255,255,.5);
+  text-align: center; padding: 18px 40px; font-size: .75rem; margin-top: 30px;
+}
+.footer strong { color: rgba(255,255,255,.8); }
+
+/* ── KEY BOX ─────────────────────────────────────────────────────────────── */
+.key-box {
+  background: var(--white); border-radius: var(--r); box-shadow: var(--sh);
+  padding: 16px 20px; margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 12px;
+}
+.key-box h3 { width: 100%; font-size: .8rem; color: var(--mid); margin-bottom: 4px; }
+.krow { display: flex; align-items: center; gap: 6px; font-size: .78rem; min-width: 200px; }
+.krow .legend-dot { width: 14px; height: 14px; border-radius: 2px; }
+
+/* ── PRINT ───────────────────────────────────────────────────────────────── */
+@media print {
+  .site-header { padding: 20px; }
+  .section { padding: 16px 20px; }
+  table { font-size: .7rem; }
+}
+
+/* ── COLUMN SEARCH BARS ──────────────────────────────────────────────── */
+.col-search {
+  width: 100%; box-sizing: border-box;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: .68rem;
+  font-family: var(--font);
+  color: #fff;
+  margin-top: 5px;
+  outline: none;
+  transition: border-color .15s, background .15s;
+}
+.col-search::placeholder { color: rgba(255,255,255,.4); font-style: italic; }
+.col-search:focus { background: rgba(255,255,255,.15); border-color: var(--teal); }
+.tbl-filtered-out { display: none !important; }
+.search-match-highlight { background: #fef9c3; border-radius: 2px; padding: 0 1px; }
+.filter-active-count {
+  font-size: .7rem; color: var(--teal);
+  margin: 4px 0 8px; font-weight: 600;
+  min-height: 16px;
+}
+
+/* ── BOND STATUS BADGES ───────────────────────────────────────────────── */
+.b-bond-changed { background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; }
+
+/* ── QUICK SEARCH BAR (top of page) ─────────────────────────────────── */
+.quick-search-wrap {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 40px 4px;
+  background: var(--white);
+  border-bottom: 1px solid var(--pale);
+  flex-wrap: wrap;
+}
+.quick-search-input {
+  flex: 1; min-width: 220px; max-width: 400px;
+  border: 1.5px solid var(--pale);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: .82rem;
+  font-family: var(--font);
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s;
+}
+.quick-search-input:focus { border-color: var(--teal); }
+.quick-search-hint { font-size: .72rem; color: var(--mid); }
+.quick-search-clear {
+  font-size: .72rem; color: var(--teal); cursor: pointer;
+  text-decoration: underline; display: none;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <h1>NEET MBBS Guide 2025 — <span>Karnataka General Domicile</span></h1>
+  <p class="sub">NIRF Top 50 + Notable Additional Colleges · Round-wise AIQ Cutoffs · KEA Fees · PG Routes · Bonds</p>
+  <div class="header-pills">
+    <span class="pill">General Category (UR)</span>
+    <span class="pill">Karnataka Domicile (KEA eligible)</span>
+    <span class="pill">NEET 2025 data · MCC/KEA verified</span>
+    <span class="pill">PG = NEET-PG / INI-CET</span>
+    <span class="pill">All fees approximate · verify with college</span>
+  </div>
+</header>
+
+<!-- LEGEND -->
+<div class="legend-bar">
+  <span style="font-weight:600;color:var(--ink)">Row colour:</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--teal)"></span>Central/AIIMS</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--green)"></span>KA Private (KEA available)</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--amber)"></span>KA Deemed (MCC only)</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--sky)"></span>Other state govt</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--purple)"></span>Private non-KA</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--orange)"></span>Notable additions (not NIRF top 50)</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#ccc"></span>No MBBS</span>
+</div>
+
+
+<!-- QUICK SEARCH BAR -->
+<div class="quick-search-wrap">
+  <strong style="font-size:.8rem;color:var(--ink);white-space:nowrap">🔍 Search any college:</strong>
+  <input type="text" class="quick-search-input" id="quickSearch"
+    placeholder="Type college name, state, type… e.g. AIIMS, Karnataka, Private">
+  <span class="quick-search-hint">Searches across all columns simultaneously</span>
+  <span class="quick-search-clear" id="quickClear" onclick="clearQuickSearch()">Clear</span>
+</div>
+
+<!-- ══ SECTION 1: MAIN TABLE ════════════════════════════════════════════════ -->
+<div class="section">
+<div class="section-title">Complete College Reference Table</div>
+<div class="section-note">
+  AIQ = 15% All India Quota via MCC. KEA = Karnataka state quota via KEA counselling.
+  KEA G-quota fee shown for KA private colleges = what a KA General domicile pays.
+  Round-wise cutoffs: R1 = Round 1, R2 = Round 2, R3/Final = last round.
+  ✦ = college added beyond NIRF top 50.
+</div>
+
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr id="filterRow">
+  <th style="width:36px">NIRF<br><input class="col-search" placeholder="eg 1" data-col="0" oninput="filterTable(this)"></th>
+  <th style="width:150px">College<br><input class="col-search" placeholder="name…" data-col="1" oninput="filterTable(this)"></th>
+  <th>State / Type<br><input class="col-search" placeholder="state…" data-col="2" oninput="filterTable(this)"></th>
+  <th>MBBS<br>Route for KA<br><input class="col-search" placeholder="AIQ/KEA…" data-col="3" oninput="filterTable(this)"></th>
+  <th>AIQ Cutoff 2025<br>(Gen, Round-wise)<br><input class="col-search" placeholder="rank…" data-col="4" oninput="filterTable(this)"></th>
+  <th>MBBS Fees<br>(₹/yr)<br><input class="col-search" placeholder="fees…" data-col="5" oninput="filterTable(this)"></th>
+  <th>MBBS Bond<br><input class="col-search" placeholder="bond…" data-col="6" oninput="filterTable(this)"></th>
+  <th>Internal<br>PG Quota<br><input class="col-search" placeholder="quota…" data-col="7" oninput="filterTable(this)"></th>
+  <th>PG Bond<br>(post MD/MS)<br><input class="col-search" placeholder="bond…" data-col="8" oninput="filterTable(this)"></th>
+  <th>PG Route<br>for KA<br><input class="col-search" placeholder="route…" data-col="9" oninput="filterTable(this)"></th>
+  <th>PG Fees<br>(₹/yr)<br><input class="col-search" placeholder="fees…" data-col="10" oninput="filterTable(this)"></th>
+  <th>KA Student Notes<br><input class="col-search" placeholder="notes…" data-col="11" oninput="filterTable(this)"></th>
+</tr>
+</thead>
+<tbody>
+
+<!-- ── AIIMS Delhi ── -->
+<tr class="row-central">
+  <td><strong>1</strong></td>
+  <td><strong>AIIMS Delhi</strong></td>
+  <td>New Delhi<br><span class="badge b-info">Central Govt</span></td>
+  <td><span class="badge b-no">100% AIQ/MCC</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>48</td><td>48</td><td><strong>48</strong></td></tr></table>
+  </td>
+  <td class="fee-cheap">~₹1,628</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (INI-CET)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>INI-CET only</td>
+  <td class="fee-cheap">~₹1,400</td>
+  <td>Top 50 AIR needed. No bond ever. Dream destination.</td>
+</tr>
+
+<!-- ── PGIMER ── -->
+<tr class="row-no-mbbs">
+  <td>2</td><td><strong>PGIMER Chandigarh</strong></td>
+  <td>Chandigarh<br><span class="badge b-na">No MBBS</span></td>
+  <td colspan="9" style="color:var(--mid);font-style:italic">PG/research only — INI-CET. No MBBS programme.</td>
+  <td></td>
+</tr>
+
+<!-- ── CMC Vellore ── -->
+<tr class="row-private">
+  <td>3</td>
+  <td><strong>CMC Vellore</strong></td>
+  <td>Tamil Nadu<br><span class="badge b-warn">Private Minority</span></td>
+  <td><span class="badge b-mcc">MCC only</span><br><small>2 open seats only</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~20 AIR</td><td>~20 AIR</td><td><strong>~Top 20 AIR</strong></td></tr></table>
+    <small>Only 2 non-TN/non-Christian open seats</small>
+  </td>
+  <td class="fee-mid">₹84,330<br><small>(TN state only)</small></td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (own process)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>CMC own + MCC</td>
+  <td class="fee-high">₹13–20L</td>
+  <td>Practically inaccessible for KA General students. Need top ~20 AIR.</td>
+</tr>
+
+<!-- ── JIPMER ── -->
+<tr class="row-central">
+  <td>4</td>
+  <td><strong>JIPMER Puducherry</strong></td>
+  <td>Puducherry<br><span class="badge b-info">Central Govt</span></td>
+  <td><span class="badge b-no">100% AIQ/MCC</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>258</td><td>260</td><td><strong>260</strong></td></tr></table>
+  </td>
+  <td class="fee-cheap">~₹1,500</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (INI-CET)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>INI-CET only</td>
+  <td class="fee-cheap">~₹1,500</td>
+  <td>Under 300 AIR. No bond. Strong clinical + research.</td>
+</tr>
+
+<!-- ── SGPGI ── -->
+<tr class="row-central">
+  <td>5</td>
+  <td><strong>SGPGI Lucknow</strong></td>
+  <td>UP — Central Govt</td>
+  <td><span class="badge b-no">100% MCC</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~400</td><td>~500</td><td><strong>~400–600</strong></td></tr></table>
+  </td>
+  <td class="fee-cheap">~₹1,000</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (INI-CET)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>INI-CET only</td>
+  <td class="fee-cheap">~₹1,000</td>
+  <td>Superspecialty exposure. No bond.</td>
+</tr>
+
+<!-- ── BHU ── -->
+<tr class="row-state-other">
+  <td>6</td>
+  <td><strong>BHU Varanasi (IMS)</strong></td>
+  <td>UP — Central Univ.</td>
+  <td><span class="badge b-no">100% MCC</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>1,165</td><td>1,400</td><td><strong>1,709</strong></td></tr></table>
+    <small>✅ Verified Shiksha/Collegedunia</small>
+  </td>
+  <td class="fee-cheap">~₹1,500</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-yes">50% Internal Quota<br><small>(BHU MBBS grads)</small></span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC AIQ 50%<br>BHU internal 50%</td>
+  <td class="fee-cheap">~₹1,220</td>
+  <td>Affordable, central univ, no bond. ~1700 AIR for KA student via AIQ.</td>
+</tr>
+
+<!-- ── NIMHANS ── -->
+<tr class="row-no-mbbs">
+  <td>7</td><td><strong>NIMHANS Bangalore</strong></td>
+  <td>KA — Central Govt<br><span class="badge b-na">No MBBS</span></td>
+  <td colspan="9" style="color:var(--mid);font-style:italic">No MBBS. Neuroscience PG/research institute (INI-CET).</td>
+  <td></td>
+</tr>
+
+<!-- ── KGMU ── -->
+<tr class="row-state-other">
+  <td>8</td>
+  <td><strong>KGMU Lucknow</strong></td>
+  <td>UP — State Govt</td>
+  <td><span class="badge b-no">15% AIQ only</span><br><small>85% UP domicile</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>1,628</td><td>2,200</td><td><strong>2,588</strong></td></tr></table>
+    <small>✅ Shiksha verified</small>
+  </td>
+  <td class="fee-cheap">~₹6,500</td>
+  <td><span class="badge b-warn">YES — 2yr UP rural<br>~₹10L penalty</span></td>
+  <td><span class="badge b-no">None (MCC AIQ)</span></td>
+  <td><span class="badge b-warn">YES — 1yr UP<br>~₹40–50L penalty</span></td>
+  <td>MCC AIQ 50%<br>UP state 50%</td>
+  <td class="fee-cheap">~₹6,500</td>
+  <td>Strong clinical. KA student gets AIQ only. MBBS + PG bond — plan carefully.</td>
+</tr>
+
+<!-- ── Amrita ── -->
+<tr class="row-private">
+  <td>9</td>
+  <td><strong>Amrita (Kochi/Coimbatore)</strong></td>
+  <td>TN/Kerala — Deemed</td>
+  <td><span class="badge b-mcc">MCC Deemed<br>open to all</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~60K</td><td>~75K</td><td><strong>~90K</strong></td></tr></table>
+  </td>
+  <td class="fee-high">₹13–16L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (MCC/deemed)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed only</td>
+  <td class="fee-high">₹18–35L</td>
+  <td>Expensive but no bond. Accessible to KA via MCC. Good PG exposure.</td>
+</tr>
+
+<!-- ── KMC Manipal ── -->
+<tr class="row-ka-deemed">
+  <td>10</td>
+  <td><strong>KMC Manipal</strong></td>
+  <td>KA — Deemed (MAHE)</td>
+  <td><span class="badge b-mcc">MCC Deemed<br>open to all</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~31K</td><td>~31K</td><td><strong>~31,834</strong></td></tr></table>
+    <small>✅ MCC verified</small>
+  </td>
+  <td class="fee-high">₹17.83L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (MCC/deemed)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed only</td>
+  <td class="fee-high">₹18–35L</td>
+  <td>In KA but deemed — no KEA route. Good brand. Expensive.</td>
+</tr>
+
+<!-- ── Saveetha ── -->
+<tr class="row-private">
+  <td>11</td><td><strong>Saveetha (SIMATS)</strong></td>
+  <td>Chennai — Deemed</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~1L–1.5L</strong></td>
+  <td class="fee-high">₹20–25L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹15–30L</td>
+  <td>Very expensive. Low-ish AIQ rank needed. Not generally recommended.</td>
+</tr>
+
+<!-- ── DY Patil ── -->
+<tr class="row-private">
+  <td>12</td><td><strong>DY Patil Vidyapeeth</strong></td>
+  <td>Pune — Deemed (MH)</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~70K–1.2L</strong></td>
+  <td class="fee-high">₹14–17L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹20–40L</td>
+  <td>MH PG bond 1yr ₹50L. Expensive.</td>
+</tr>
+
+<!-- ── AIIMS Rishikesh ── -->
+<tr class="row-central">
+  <td>13</td>
+  <td><strong>AIIMS Rishikesh</strong></td>
+  <td>Uttarakhand — Central</td>
+  <td><span class="badge b-no">100% AIQ/MCC</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>685</td><td>781</td><td><strong>816</strong></td></tr></table>
+    <small>✅ Shiksha verified</small>
+  </td>
+  <td class="fee-cheap">~₹1,628</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (INI-CET)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>INI-CET only</td>
+  <td class="fee-cheap">~₹1,400</td>
+  <td>Under 820 AIR. No bond. Excellent AIIMS campus.</td>
+</tr>
+
+<!-- ── AIIMS Bhubaneswar ── -->
+<tr class="row-central">
+  <td>14</td>
+  <td><strong>AIIMS Bhubaneswar</strong></td>
+  <td>Odisha — Central</td>
+  <td><span class="badge b-no">100% AIQ/MCC</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>706</td><td>—</td><td><strong>785</strong></td></tr></table>
+    <small>✅ Shiksha (MCC data) — R1=706, Final=785</small>
+  </td>
+  <td class="fee-cheap">~₹1,628</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (INI-CET)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>INI-CET only</td>
+  <td class="fee-cheap">~₹1,400</td>
+  <td>Good AIIMS. Cutoff shifted significantly in 2025 — verify before counselling.</td>
+</tr>
+
+<!-- ── Siksha O Anusandhan ── -->
+<tr class="row-private">
+  <td>15</td><td><strong>Siksha 'O' Anusandhan</strong></td>
+  <td>Odisha — Deemed</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~80K–1.5L</strong></td>
+  <td class="fee-high">₹12–15L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹15–25L</td>
+  <td></td>
+</tr>
+
+<!-- ── Madras Medical College ── -->
+<tr class="row-state-other">
+  <td>16</td>
+  <td><strong>Madras Medical College</strong></td>
+  <td>Tamil Nadu — State Govt</td>
+  <td><span class="badge b-no">15% AIQ only</span><br><small>85% TN domicile</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~900</td><td>~1,100</td><td><strong>1,296</strong></td></tr></table>
+    <small>✅ Shiksha (MCC data) — Final=1,296</small>
+  </td>
+  <td class="fee-cheap">~₹13,000</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (MCC AIQ)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC AIQ 50%<br>TN state 50%</td>
+  <td class="fee-cheap">~₹50K</td>
+  <td>KA student via AIQ only. ⚠️ Bond status conflicted across sources — some say no bond (TN), others say 5yr rural. Verify with TN DME before admission.</td>
+</tr>
+
+<!-- ── Sree Chitra ── -->
+<tr class="row-no-mbbs">
+  <td>17</td><td><strong>Sree Chitra Tirunal</strong></td>
+  <td>Kerala — Central<br><span class="badge b-na">No MBBS</span></td>
+  <td colspan="9" style="color:var(--mid);font-style:italic">Superspecialty research institute. No MBBS.</td>
+  <td></td>
+</tr>
+
+<!-- ── SRM ── -->
+<tr class="row-private">
+  <td>18</td><td><strong>SRM Institute</strong></td>
+  <td>Chennai — Deemed</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~60K–1L</strong></td>
+  <td class="fee-high">₹15–18L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹18–30L</td>
+  <td></td>
+</tr>
+
+<!-- ── AIIMS Jodhpur ── -->
+<tr class="row-central">
+  <td>19</td>
+  <td><strong>AIIMS Jodhpur</strong></td>
+  <td>Rajasthan — Central</td>
+  <td><span class="badge b-no">100% AIQ/MCC</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>392</td><td>392</td><td><strong>392</strong></td></tr></table>
+    <small>✅ Sartha verified</small>
+  </td>
+  <td class="fee-cheap">~₹1,628</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (INI-CET)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>INI-CET only</td>
+  <td class="fee-cheap">~₹1,400</td>
+  <td>Under 400 AIR. No bond. Excellent.</td>
+</tr>
+
+<!-- ── Datta Meghe ── -->
+<tr class="row-private">
+  <td>20</td><td><strong>Datta Meghe Inst.</strong></td>
+  <td>Wardha MH — Deemed</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~1L–1.5L</strong></td>
+  <td class="fee-high">₹10–14L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹20–35L</td>
+  <td></td>
+</tr>
+
+<!-- ── Sri Ramachandra ── -->
+<tr class="row-private">
+  <td>21</td><td><strong>Sri Ramachandra (SRIHER)</strong></td>
+  <td>Chennai — Deemed</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~50K–80K</strong></td>
+  <td class="fee-high">₹16–20L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹20–35L</td>
+  <td></td>
+</tr>
+
+<!-- ── VMMC ── -->
+<tr class="row-state-other">
+  <td>22</td>
+  <td><strong>VMMC &amp; Safdarjung</strong></td>
+  <td>Delhi — IPU/Central</td>
+  <td><span class="badge b-no">15% AIQ + DU internal</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>107</td><td>132</td><td><strong>132</strong></td></tr></table>
+    <small>✅ Collegedunia 2025</small>
+  </td>
+  <td class="fee-cheap">~₹3,500</td>
+  <td><span class="badge b-warn">YES — Delhi 2025-26 new<br>1yr GNCT ~₹15L</span></td>
+  <td><span class="badge b-yes">50% DU internal quota<br><small>(DU MBBS grads)</small></span></td>
+  <td><span class="badge b-warn">YES — 1yr Delhi<br>~₹50L PG penalty</span></td>
+  <td>MCC AIQ 50%<br>DU internal 50%</td>
+  <td class="fee-cheap">~₹50K–1L</td>
+  <td>Under 135 AIR. New MBBS bond from 2025-26. PG bond too.</td>
+</tr>
+
+<!-- ── IPGMER Kolkata ── -->
+<tr class="row-state-other">
+  <td>23</td>
+  <td><strong>IPGMER Kolkata</strong></td>
+  <td>West Bengal — State Govt</td>
+  <td><span class="badge b-no">15% AIQ only</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~10K</td><td>~15K</td><td><strong>18,783</strong></td></tr></table>
+    <small>✅ Shiksha (MCC data) — Final=18,783. High because WB domicile fills most seats.</small>
+  </td>
+  <td class="fee-cheap">~₹5,000</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC AIQ 50%<br>WB state 50%</td>
+  <td class="fee-cheap">~₹50K</td>
+  <td>No bond. KA via AIQ only. Final AIQ Gen=18,783 — high because WB domicile fills 85% separately.</td>
+</tr>
+
+<!-- ── KIIT ── -->
+<tr class="row-private">
+  <td>24</td><td><strong>KIIT Bhubaneswar</strong></td>
+  <td>Odisha — Deemed</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~80K–1.5L</strong></td>
+  <td class="fee-high">₹13–16L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹15–25L</td>
+  <td></td>
+</tr>
+
+<!-- ── AIIMS Bhopal ── -->
+<tr class="row-central">
+  <td>25</td>
+  <td><strong>AIIMS Bhopal</strong></td>
+  <td>MP — Central</td>
+  <td><span class="badge b-no">100% AIQ/MCC</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>531</td><td>634</td><td><strong>634</strong></td></tr></table>
+    <small>✅ Shiksha (MCC data) — R1=531, R2=634, Final=634</small>
+  </td>
+  <td class="fee-cheap">~₹1,628</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (INI-CET)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>INI-CET only</td>
+  <td class="fee-cheap">~₹1,400</td>
+  <td>Under 640 AIR. No bond. Strong campus.</td>
+</tr>
+
+<!-- ── MAMC ── -->
+<tr class="row-state-other">
+  <td>26</td>
+  <td><strong>MAMC Delhi</strong></td>
+  <td>Delhi — DU/State Govt</td>
+  <td><span class="badge b-no">15% AIQ only</span><br><small>85% Delhi domicile</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>85</td><td>87</td><td><strong>103</strong></td></tr></table>
+    <small>✅ Collegedunia confirmed (AIQ)</small>
+  </td>
+  <td class="fee-cheap">~₹1,500</td>
+  <td><span class="badge b-warn">YES — Delhi 2025-26<br>1yr GNCT ~₹15L</span></td>
+  <td><span class="badge b-yes">50% DU internal quota</span></td>
+  <td><span class="badge b-warn">YES — 1yr Delhi<br>~₹15L PG penalty</span></td>
+  <td>MCC AIQ 50%<br>DU internal 50%</td>
+  <td class="fee-cheap">~₹50K–1L</td>
+  <td>Top ~103 AIR for AIQ. Prestige pick. Both MBBS &amp; PG bond from 2025-26.</td>
+</tr>
+
+<!-- ── AIIMS Patna ── -->
+<tr class="row-central">
+  <td>27</td>
+  <td><strong>AIIMS Patna</strong></td>
+  <td>Bihar — Central</td>
+  <td><span class="badge b-no">100% AIQ/MCC</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~1,476</td><td>—</td><td><strong>4,952 ⚠️</strong></td></tr></table>
+    <small>✅ Shiksha+Sartha (MCC) — 2025 anomaly: seats cascaded to later rounds. Historically closes ~1,500–2,000.</small>
+  </td>
+  <td class="fee-cheap">~₹1,628</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (INI-CET)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>INI-CET only</td>
+  <td class="fee-cheap">~₹1,400</td>
+  <td>⚠️ 2025 anomaly year — final closed at 4,952 (seats cascaded to mop-up). Historically ~1,500–2,000. No bond.</td>
+</tr>
+
+<!-- ── ILBS ── -->
+<tr class="row-no-mbbs">
+  <td>28</td><td><strong>ILBS Delhi</strong></td>
+  <td>Delhi — Govt<br><span class="badge b-na">No MBBS</span></td>
+  <td colspan="9" style="color:var(--mid);font-style:italic">Liver &amp; biliary sciences specialty — no MBBS.</td>
+  <td></td>
+</tr>
+
+<!-- ── AMU ── -->
+<tr class="row-state-other">
+  <td>29</td>
+  <td><strong>AMU Aligarh (JNMC)</strong></td>
+  <td>UP — Central Univ (Minority)</td>
+  <td><span class="badge b-no">100% MCC</span><br><small>50% open, 50% AMU internal</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~5K</td><td>~6K</td><td><strong>~5K–8K</strong></td></tr></table>
+    <small>Open seats only (50% Muslim internal)</small>
+  </td>
+  <td class="fee-cheap">~₹30–50K</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-yes">50% AMU internal<br><small>(AMU MBBS grads)</small></span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC AIQ 50%<br>AMU internal 50%</td>
+  <td class="fee-cheap">~₹1,200</td>
+  <td>Very affordable. ~50 open seats for non-AMU students. No bond.</td>
+</tr>
+
+<!-- ── St John's ── -->
+<tr class="row-ka-private">
+  <td>30</td>
+  <td><strong>St. John's Medical College</strong></td>
+  <td>Bengaluru — Private Minority (RC Christian)</td>
+  <td><span class="badge b-kea">KEA (very limited)<br>+ MCC AIQ</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~15K</td><td>~20K</td><td><strong>~15K–25K</strong></td></tr></table>
+    <small>Few open non-Christian KEA seats</small>
+  </td>
+  <td class="fee-cheap">₹1.1–1.5L<br><small>(KEA G-quota)</small></td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (own process)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td><span class="badge b-kea">KEA PGET available</span><br>G-quota KA domicile</td>
+  <td class="fee-mid">G-quota: ~₹1.5–2L<br>P-quota: ~₹20–30L</td>
+  <td>KEA seats exist but mostly Christian-reserved. Very few open seats. No bond. PG via KEA PGET for KA domicile.</td>
+</tr>
+
+<!-- ── AIIMS Raipur ── -->
+<tr class="row-central">
+  <td>31</td>
+  <td><strong>AIIMS Raipur</strong></td>
+  <td>Chhattisgarh — Central</td>
+  <td><span class="badge b-no">100% AIQ/MCC</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>1,235</td><td>—</td><td><strong>1,376</strong></td></tr></table>
+    <small>✅ Shiksha+Sartha (MCC data) — R1=1,235, Final=1,376</small>
+  </td>
+  <td class="fee-cheap">~₹1,628</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (INI-CET)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>INI-CET only</td>
+  <td class="fee-cheap">~₹1,400</td>
+  <td>Under 1,400 AIR. No bond. Unique tribal disease mix — great clinical exposure. Lowest fees of all AIIMS (₹1,350/yr).</td>
+</tr>
+
+<!-- ── Lady Hardinge ── -->
+<tr class="row-state-other">
+  <td>32</td>
+  <td><strong>Lady Hardinge MC</strong></td>
+  <td>Delhi — DU/State (WOMEN ONLY)</td>
+  <td><span class="badge b-no">15% AIQ only</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>60</td><td>62</td><td><strong>62</strong></td></tr></table>
+    <small>✅ Delhi cutoff data. Women only.</small>
+  </td>
+  <td class="fee-cheap">~₹3,500</td>
+  <td><span class="badge b-warn">YES — Delhi 2025-26<br>1yr GNCT ~₹15L</span></td>
+  <td><span class="badge b-yes">50% DU internal (women)</span></td>
+  <td><span class="badge b-warn">YES — 1yr Delhi<br>~₹15L PG penalty</span></td>
+  <td>MCC AIQ 50%<br>DU internal 50%</td>
+  <td class="fee-cheap">~₹50K–1L</td>
+  <td>WOMEN ONLY. Under 63 AIR. Prestigious. Both MBBS &amp; PG bond.</td>
+</tr>
+
+<!-- ── MM Deemed ── -->
+<tr class="row-private">
+  <td>33</td><td><strong>Maharishi Markandeshwar</strong></td>
+  <td>Ambala, Haryana — Deemed</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~80K–1.5L</strong></td>
+  <td class="fee-high">₹13–16L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹15–25L</td>
+  <td></td>
+</tr>
+
+<!-- ── GMC Chandigarh ── -->
+<tr class="row-state-other">
+  <td>34</td>
+  <td><strong>GMC &amp; Hosp. Chandigarh</strong></td>
+  <td>Chandigarh UT — Govt</td>
+  <td><span class="badge b-no">15% AIQ only</span><br><small>85% UT quota</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~580</td><td>—</td><td><strong>690</strong></td></tr></table>
+    <small>✅ Shiksha (MCC data) — General AIQ Final=690. UT quota fills 85% separately.</small>
+  </td>
+  <td class="fee-cheap">~₹25K</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC AIQ 50%<br>UT state 50%</td>
+  <td class="fee-cheap">~₹50K–1L</td>
+  <td>No bond. AIQ Final=690 (General). Competitive — UT domicile gets 85% of seats separately via Chandigarh state quota.</td>
+</tr>
+
+<!-- ── KMC Mangalore ── -->
+<tr class="row-ka-deemed">
+  <td>35</td>
+  <td><strong>KMC Mangalore</strong></td>
+  <td>Mangaluru — Deemed (MAHE)<br><small>⚠️ NOT via KEA — MCC only</small></td>
+  <td><span class="badge b-mcc">MCC Deemed<br>open to all India</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~52K</td><td>~55K</td><td><strong>~52K–57K</strong></td></tr></table>
+    <small>✅ MCC Deemed data</small>
+  </td>
+  <td class="fee-mid">₹1.44–1.5L<br><small>(MCC Govt quota)</small></td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (MCC/deemed)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed only<br><small>(MAHE univ.)</small></td>
+  <td class="fee-high">₹18–34L</td>
+  <td>In KA but DEEMED — no KEA route at MBBS or PG. Excellent clinical. No bond.</td>
+</tr>
+
+<!-- ── Dayanand ── -->
+<tr class="row-private">
+  <td>36</td><td><strong>Dayanand MC Ludhiana</strong></td>
+  <td>Punjab — Private</td>
+  <td><span class="badge b-mcc">MCC only</span></td>
+  <td><strong>~10K–20K</strong></td>
+  <td class="fee-high">₹8–12L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>Punjab state/MCC</td>
+  <td class="fee-high">₹8–15L</td>
+  <td>Decent private. Under 20K AIR. No bond.</td>
+</tr>
+
+<!-- ── JSS Mysuru ── -->
+<tr class="row-ka-deemed">
+  <td>37</td>
+  <td><strong>JSS Medical College, Mysuru</strong></td>
+  <td>Mysuru — Deemed (JSS AHER)<br><small>⚠️ NOT via KEA — MCC only</small></td>
+  <td><span class="badge b-mcc">MCC Deemed<br>open to all India</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~1.17L</td><td>~1.4L</td><td><strong>~1.17L–1.7L</strong></td></tr></table>
+    <small>Very high because management seats close late</small>
+  </td>
+  <td class="fee-mid">₹1,44,496<br><small>(MCC Govt quota)</small></td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (MCC/deemed)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed only<br><small>(JSS AHER univ.)</small></td>
+  <td class="fee-high">₹22–35L</td>
+  <td>In KA but DEEMED — no KEA route. Strong PG programme. NAAC A++. Expensive PG.</td>
+</tr>
+
+<!-- ── UCMS Delhi ── -->
+<tr class="row-state-other">
+  <td>38</td>
+  <td><strong>UCMS Delhi</strong></td>
+  <td>Delhi — DU/State Govt</td>
+  <td><span class="badge b-no">15% AIQ only</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~400</td><td>~480</td><td><strong>559</strong></td></tr></table>
+    <small>✅ Shiksha 2025</small>
+  </td>
+  <td class="fee-cheap">~₹3,000</td>
+  <td><span class="badge b-warn">YES — Delhi 2025-26<br>1yr GNCT ~₹15L</span></td>
+  <td><span class="badge b-yes">50% DU internal quota</span></td>
+  <td><span class="badge b-warn">YES — 1yr Delhi<br>~₹15L PG penalty</span></td>
+  <td>MCC AIQ 50%<br>DU internal 50%</td>
+  <td class="fee-cheap">~₹50K–1L</td>
+  <td>Under 560 AIR for AIQ. Very affordable. Both MBBS &amp; PG bond.</td>
+</tr>
+
+<!-- ── SMS Jaipur ── -->
+<tr class="row-state-other">
+  <td>39</td>
+  <td><strong>SMS Medical College Jaipur</strong></td>
+  <td>Rajasthan — State Govt</td>
+  <td><span class="badge b-no">15% AIQ only</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~1,200</td><td>~2,000</td><td><strong>2,531</strong></td></tr></table>
+    <small>✅ Shiksha (MCC data) — Final=2,531</small>
+  </td>
+  <td class="fee-cheap">~₹13K</td>
+  <td><span class="badge b-warn">YES — 1yr RJ rural<br>~₹10L penalty</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-warn">YES — 1yr RJ service<br>Up to ₹1.5Cr (Radiology/Derma!)</span></td>
+  <td>MCC AIQ 50%<br>RJ state 50%</td>
+  <td class="fee-cheap">~₹87K</td>
+  <td>⚠️ MASSIVE PG bond. Rajasthan PG bond penalty can reach ₹1.5Cr for clinical branches. Factor this in carefully.</td>
+</tr>
+
+<!-- ── Jamia Hamdard ── -->
+<tr class="row-private">
+  <td>40</td>
+  <td><strong>Jamia Hamdard</strong></td>
+  <td>Delhi — Deemed (Minority-Muslim)</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~30K–60K</strong></td>
+  <td class="fee-mid">₹3–5L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹15–25L</td>
+  <td>Relatively affordable deemed. Muslim minority quota on some seats.</td>
+</tr>
+
+<!-- ── Medical College Kolkata ── -->
+<tr class="row-state-other">
+  <td>41</td>
+  <td><strong>Medical College Kolkata</strong></td>
+  <td>West Bengal — State Govt</td>
+  <td><span class="badge b-no">15% AIQ only</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~2,500</td><td>~3,000</td><td><strong>3,581</strong></td></tr></table>
+    <small>✅ Shiksha (MCC data) — Final=3,581</small>
+  </td>
+  <td class="fee-cheap">~₹5,000</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC AIQ 50%<br>WB state 50%</td>
+  <td class="fee-cheap">~₹50K</td>
+  <td>Historic institution. No bond. KA via AIQ. Established 1835.</td>
+</tr>
+
+<!-- ── MGMCRI ── -->
+<tr class="row-private">
+  <td>42</td><td><strong>MGMCRI Puducherry</strong></td>
+  <td>Puducherry — Deemed</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~1L–1.5L</strong></td>
+  <td class="fee-high">₹8–12L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹15–25L</td>
+  <td></td>
+</tr>
+
+<!-- ── PSG ── -->
+<tr class="row-private">
+  <td>43</td><td><strong>PSG IMSR Coimbatore</strong></td>
+  <td>Tamil Nadu — Private</td>
+  <td><span class="badge b-mcc">MCC only</span></td>
+  <td><strong>~30K–60K</strong></td>
+  <td class="fee-high">₹4–8L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>TN state/MCC</td>
+  <td class="fee-high">₹8–15L</td>
+  <td>Relatively affordable private. No bond.</td>
+</tr>
+
+<!-- ── Gujarat Cancer (no MBBS) ── -->
+<tr class="row-no-mbbs">
+  <td>44</td><td><strong>Gujarat Cancer &amp; Research</strong></td>
+  <td>Gujarat — Govt<br><span class="badge b-na">No MBBS</span></td>
+  <td colspan="9" style="color:var(--mid);font-style:italic">Cancer specialty institute. No MBBS.</td>
+  <td></td>
+</tr>
+
+<!-- ── BJ Medical ── -->
+<tr class="row-state-other">
+  <td>45</td>
+  <td><strong>BJ Medical College, Ahmedabad</strong></td>
+  <td>Gujarat — State Govt</td>
+  <td><span class="badge b-no">15% AIQ only</span><br><small>Gujarat is closed state (85% domicile)</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~700</td><td>~850</td><td><strong>889</strong></td></tr></table>
+    <small>✅ Shiksha (MCC data) — Final=889. Extremely competitive — Gujarat AIQ fills early.</small>
+  </td>
+  <td class="fee-cheap">~₹15K</td>
+  <td><span class="badge b-warn">YES — 1yr GJ rural<br>~₹20L penalty</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-warn">YES — 1yr Gujarat<br>~₹40L PG penalty</span></td>
+  <td>MCC AIQ 50%<br>GJ state 50%</td>
+  <td class="fee-cheap">~₹1L</td>
+  <td>AIQ Final=889 (very competitive). Gujarat state quota (85%) fills separately. MBBS bond: 1yr rural GJ. PG bond: 1yr GJ. KA student via AIQ only.</td>
+</tr>
+
+<!-- ── JN Medical Belagavi ── -->
+<tr class="row-ka-private">
+  <td>46</td>
+  <td><strong>JN Medical College Belagavi (KLE)</strong></td>
+  <td>Belagavi, KA — Private (KLE Univ.)</td>
+  <td><span class="badge b-kea">KEA seats available<br>+ MCC AIQ</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~1,500</td><td>~2,000</td><td><strong>~1,500–3,000</strong></td></tr></table>
+    <small>New NIRF entrant — less data</small>
+  </td>
+  <td class="fee-cheap">₹60K–1L<br><small>(KEA G-quota)</small></td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td><span class="badge b-kea">KEA PGET available</span><br>G-quota KA domicile</td>
+  <td class="fee-mid">G-quota: ~₹1.5–2.5L<br>P-quota: ~₹15–25L</td>
+  <td>New NIRF entrant. Good KEA fees for KA students. PG via KEA PGET. No bond.</td>
+</tr>
+
+<!-- ── CMC Ludhiana ── -->
+<tr class="row-private">
+  <td>47</td><td><strong>CMC Ludhiana</strong></td>
+  <td>Punjab — Private (Christian Minority)</td>
+  <td><span class="badge b-mcc">MCC only</span></td>
+  <td><strong>~30K–60K</strong></td>
+  <td class="fee-high">₹4–8L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>Punjab state/MCC</td>
+  <td class="fee-high">₹8–15L</td>
+  <td>Christian minority college. Relatively affordable. No bond.</td>
+</tr>
+
+<!-- ── Osmania ── -->
+<tr class="row-state-other">
+  <td>48</td>
+  <td><strong>Osmania MC Hyderabad</strong></td>
+  <td>Telangana — State Govt</td>
+  <td><span class="badge b-no">15% AIQ only</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~3K</td><td>~5K</td><td><strong>~3K–8K</strong></td></tr></table>
+  </td>
+  <td class="fee-cheap">~₹10K</td>
+  <td><span class="badge b-yes">No Bond (MBBS)</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-warn">YES — 3yr Telangana<br>~₹20L penalty</span></td>
+  <td>MCC AIQ 50%<br>TG state 50%</td>
+  <td class="fee-cheap">~₹56K</td>
+  <td>No MBBS bond. But PG bond is 3 years — long commitment.</td>
+</tr>
+
+<!-- ── Chettinad ── -->
+<tr class="row-private">
+  <td>49</td><td><strong>Chettinad Academy</strong></td>
+  <td>Tamil Nadu — Deemed</td>
+  <td><span class="badge b-mcc">MCC Deemed</span></td>
+  <td><strong>~1L–1.5L</strong></td>
+  <td class="fee-high">₹10–15L</td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td>MCC/deemed</td>
+  <td class="fee-high">₹15–25L</td>
+  <td></td>
+</tr>
+
+<!-- ── MS Ramaiah ── -->
+<tr class="row-ka-private">
+  <td>50</td>
+  <td><strong>MS Ramaiah MC</strong></td>
+  <td>Bengaluru — Private (RGUHS)</td>
+  <td><span class="badge b-kea">KEA seats available<br>G/P/Q quota</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>~7K</td><td>~9K</td><td><strong>~6,905–11,776 (GM)</strong></td></tr></table>
+    <small>CollegesInfo KEA GM quota 2025</small>
+  </td>
+  <td class="fee-cheap">₹1.09–1.54L<br><small>(KEA G-quota)</small></td>
+  <td><span class="badge b-yes">No Bond</span></td>
+  <td><span class="badge b-no">None (MCC/deemed)</span></td>
+  <td><span class="badge b-yes">No PG Bond</span></td>
+  <td><span class="badge b-kea">KEA PGET available</span><br>G-quota KA domicile</td>
+  <td class="fee-mid">G-quota: ~₹1.5–2.5L<br>P-quota: ~₹20–30L</td>
+  <td>Best private MBBS for KA General students. KEA G-quota affordable. Strong PG performance. No bond.</td>
+</tr>
+
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<!-- ── ADDITIONAL NOTABLE COLLEGES ── -->
+<!-- ════════════════════════════════════════════════════════════════════════ -->
+<tr><td colspan="12" style="background:var(--orange-lt);color:var(--orange);font-weight:700;padding:8px 12px;font-size:.8rem;text-transform:uppercase;letter-spacing:.5px">
+  ✦ Additional Notable Colleges — Not in NIRF Top 50 but worth considering
+</td></tr>
+
+<!-- ── BMCRI ── -->
+<tr class="row-extra">
+  <td>✦</td>
+  <td><strong>BMCRI Bangalore</strong><br><small>Bangalore Medical College &amp; Research Inst.</small></td>
+  <td>Bengaluru — KA State Govt</td>
+  <td><span class="badge b-kea">KEA 85% state quota<br>+ 15% AIQ</span><br><small>KA domicile gets 85%!</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>1,338</td><td>1,394</td><td><strong>1,549 (AIQ Gen)</strong></td></tr>
+    <tr><td colspan="3" style="font-size:.68rem">KEA state quota General: ~7,589 rank (all-India rank)</td></tr></table>
+    <small>✅ Shiksha 2025 verified</small>
+  </td>
+  <td class="fee-cheap">~₹70–80K<br><small>(KA govt)</small></td>
+  <td><span class="badge b-warn">YES — 1yr KA rural<br><small>Bond still exists; 2025 ordinance only de-linked it from PG prerequisite — service can now be done after PG</small></span></td>
+  <td><span class="badge b-no">None (KEA PGET)</span></td>
+  <td><span class="badge b-warn">YES — 1yr KA<br>~₹50L PG penalty</span></td>
+  <td><span class="badge b-kea">KEA PGET — Govt quota</span><br>PG G-quota: KA domicile</td>
+  <td class="fee-cheap">G-quota: ~₹50K–1L<br>+ 1yr KA service bond</td>
+  <td>🌟 BEST option for KA General students. Huge clinical exposure (Victoria/KR Hospital). Affordable. KEA state quota accessible with ~600+ NEET. PG bond = 1yr KA service.</td>
+</tr>
+
+<!-- ── AFMC ── -->
+<tr class="row-extra">
+  <td>✦</td>
+  <td><strong>AFMC Pune</strong><br><small>Armed Forces Medical College</small></td>
+  <td>Pune — Defence/Central</td>
+  <td><span class="badge b-no">100% MCC + AFMC screening</span><br><small>NEET + ToELR + Interview</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>Boys cutoff</th><th>Girls cutoff</th></tr>
+    <tr><td>670 marks</td><td>685 marks</td></tr>
+    <tr><td colspan="2" style="font-size:.68rem">Rank equivalent: ~1,000–2,000 AIR (Gen boys)</td></tr></table>
+    <small>Mark-based cutoff — NEET + ToELR + interview</small>
+  </td>
+  <td class="fee-cheap">~₹250/month<br><small>(fully subsidised + stipend)</small></td>
+  <td><span class="badge b-warn">YES — 7yr military service<br>bond (compulsory)</span></td>
+  <td><span class="badge b-no">None (MCC/NEET-PG)</span></td>
+  <td><span class="badge b-yes">No separate PG Bond</span><br><small>(service bond covers)</small></td>
+  <td>MCC/NEET-PG + AFMS quota</td>
+  <td class="fee-cheap">Very low (military)</td>
+  <td>Unique: essentially free + stipend but requires 7-yr military service commitment. Discipline-intensive. Separate screening process. Not suitable if not interested in armed forces career.</td>
+</tr>
+
+<!-- ── Seth GS / KEM Mumbai ── -->
+<tr class="row-extra">
+  <td>✦</td>
+  <td><strong>Seth GS Medical College &amp; KEM Hospital, Mumbai</strong></td>
+  <td>Mumbai — Maharashtra State Govt (BMC funded)</td>
+  <td><span class="badge b-no">15% AIQ only</span><br><small>85% Maharashtra domicile</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>868</td><td>1,126</td><td><strong>1,126</strong></td></tr>
+    <tr><td colspan="3" style="font-size:.68rem">MH State quota Gen ~1,361 (R1)</td></tr></table>
+    <small>✅ Careers360/Shiksha 2025 verified</small>
+  </td>
+  <td class="fee-cheap">~₹1.04L<br><small>(govt, total 5.5yr ≈ ₹5.72L)</small></td>
+  <td><span class="badge b-warn">YES — 1yr MH rural<br>~₹10L penalty</span></td>
+  <td><span class="badge b-no">None</span></td>
+  <td><span class="badge b-warn">YES — 1yr MH<br>~₹50L PG penalty</span></td>
+  <td>MCC AIQ 50%<br>MH state 50%</td>
+  <td class="fee-cheap">~₹1.5L<br><small>MH PG bond: 1yr ₹50L</small></td>
+  <td>Legendary clinical exposure — 1,800 bed KEM Hospital, 1.8M patients/year. KA student via AIQ only. Both MBBS &amp; PG bond (MH). NIRF rank ~11 in many non-NIRF rankings.</td>
+</tr>
+
+<!-- ── ABVIMS RML Delhi ── -->
+<tr class="row-extra">
+  <td>✦</td>
+  <td><strong>ABVIMS &amp; Dr. RML Hospital</strong><br><small>Atal Bihari Vajpayee IMS</small></td>
+  <td>New Delhi — IPU/Central Govt</td>
+  <td><span class="badge b-no">15% AIQ + DU internal 50%</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>R1</th><th>R2</th><th>Final</th></tr>
+    <tr><td>145</td><td>215</td><td><strong>215</strong></td></tr>
+    <tr><td colspan="3" style="font-size:.68rem">Delhi IPU state quota (85%): ~2,000–5,000 range</td></tr></table>
+    <small>✅ Careers360+Shiksha (MCC data) — R1=145, R2=215, Final=215</small>
+  </td>
+  <td class="fee-cheap">~₹2,400</td>
+  <td><span class="badge b-warn">YES — Delhi 2025-26<br>1yr GNCT ~₹15L</span></td>
+  <td><span class="badge b-yes">50% IPU internal quota</span></td>
+  <td><span class="badge b-warn">YES — 1yr Delhi<br>~₹15L PG penalty</span></td>
+  <td>MCC AIQ 50%<br>IPU internal 50%</td>
+  <td class="fee-cheap">~₹50K–1L</td>
+  <td>IP University central institute. Very affordable. Final AIQ=215 (not 2,500–4,000 as previously shown). MBBS &amp; PG bond from 2025-26. Strong RML Hospital exposure.</td>
+</tr>
+
+<!-- ── KIMS Hubli ── -->
+<tr class="row-extra">
+  <td>✦</td>
+  <td><strong>KIMS Hubli</strong><br><small>Karnataka Institute of Medical Sciences</small></td>
+  <td>Hubballi — KA State Govt</td>
+  <td><span class="badge b-kea">KEA 85% state quota<br>+ 15% AIQ</span><br><small>KA domicile — 85% accessible!</small></td>
+  <td>
+    <table class="rnd-table"><tr><th>AIQ Gen Final</th><th>KEA State (Gen)</th></tr>
+    <tr><td>~8K–15K</td><td>~40K–80K AIR</td></tr></table>
+    <small>Second-most competitive KA govt college after BMCRI</small>
+  </td>
+  <td class="fee-cheap">~₹70–80K<br><small>(KA govt)</small></td>
+  <td><span class="badge b-warn">YES — 1yr KA rural<br><small>Bond still exists; 2025 ordinance only de-linked it from PG prerequisite — service can now be done after PG</small></span></td>
+  <td><span class="badge b-no">None (KEA PGET)</span></td>
+  <td><span class="badge b-warn">YES — 1yr KA<br>~₹50L PG penalty</span></td>
+  <td><span class="badge b-kea">KEA PGET — Govt quota</span></td>
+  <td class="fee-cheap">G-quota: ~₹50K–1L<br>+ 1yr KA PG bond</td>
+  <td>Excellent KA govt college. Strong hospital. KEA state quota means even ~550+ marks can get you in. 1yr MBBS &amp; PG bond — same as BMCRI.</td>
+</tr>
+
+<!-- ── Mysore Medical College ── -->
+<tr class="row-extra">
+  <td>✦</td>
+  <td><strong>Mysore Medical College (MMCRI)</strong></td>
+  <td>Mysuru — KA State Govt</td>
+  <td><span class="badge b-kea">KEA 85% state quota<br>+ 15% AIQ</span></td>
+  <td>
+    <table class="rnd-table"><tr><th>AIQ Gen Final</th><th>KEA State (Gen)</th></tr>
+    <tr><td>~5K–10K</td><td>~25K–50K AIR</td></tr></table>
+  </td>
+  <td class="fee-cheap">~₹70–80K</td>
+  <td><span class="badge b-warn">YES — 1yr KA rural</span></td>
+  <td><span class="badge b-no">None (KEA PGET)</span></td>
+  <td><span class="badge b-warn">YES — 1yr KA<br>~₹50L PG penalty</span></td>
+  <td><span class="badge b-kea">KEA PGET — Govt quota</span></td>
+  <td class="fee-cheap">G-quota: ~₹50K–1L<br>+ 1yr KA PG bond</td>
+  <td>Top KA govt college in Mysuru. Same bond structure as BMCRI. Accessible via KEA state quota for KA General students.</td>
+</tr>
+
+</tbody>
+</table>
+</div><!-- tbl-wrap -->
+<div class="filter-active-count" id="filterCount"></div>
+</div><!-- section -->
+
+<!-- ══ SECTION 2: RANKING TABLE ════════════════════════════════════════════ -->
+<div class="section">
+<div class="section-title">College Rankings by AIQ Cutoff — General Category 2025</div>
+<div class="section-note">
+  Ranked by final-round AIQ closing rank (General, All India). Lower rank number = harder to get.
+  <strong>For a KA General domicile student:</strong> also check KEA state quota ranks — many KA govt colleges are far more accessible via 85% state quota than their AIQ rank suggests.
+</div>
+
+<div class="rank-grid">
+
+<!-- CENTRAL/AIIMS -->
+<div class="rank-card">
+  <div class="rank-card-header rh-central">Central Institutes / AIIMS — AIQ Ranks</div>
+  <ol>
+    <li><span class="rn">1</span><div class="rc"><strong>AIIMS Delhi</strong><span class="rrank">AIR 48 (R1:48, Final:48)</span></div></li>
+    <li><span class="rn">2</span><div class="rc"><strong>Lady Hardinge MC (Women)</strong><span class="rrank">AIR 62 (Final:62)</span></div></li>
+    <li><span class="rn">3</span><div class="rc"><strong>AIIMS Jodhpur</strong><span class="rrank">AIR 392 (Final:392)</span></div></li>
+    <li><span class="rn">4</span><div class="rc"><strong>AIIMS Bhopal</strong><span class="rrank">AIR 634 (R1:531, R2:634, Final:634)</span></div></li>
+    <li><span class="rn">5</span><div class="rc"><strong>AIIMS Bhubaneswar</strong><span class="rrank">AIR 785 (R1:706, Final:785)</span></div></li>
+    <li><span class="rn">6</span><div class="rc"><strong>AIIMS Rishikesh</strong><span class="rrank">AIR 816 (R1:685, Final:816)</span></div></li>
+    <li><span class="rn">7</span><div class="rc"><strong>JIPMER Puducherry</strong><span class="rrank">AIR 260 (Final:260)</span></div></li>
+    <li><span class="rn">8</span><div class="rc"><strong>SGPGI Lucknow</strong><span class="rrank">AIR ~400–600 (estimate)</span></div></li>
+    <li><span class="rn">9</span><div class="rc"><strong>AIIMS Patna</strong><span class="rrank">AIR 4,952 ⚠️ anomaly (R1:~1,476, Final:4,952) — historical ~1,500</span></div></li>
+    <li><span class="rn">10</span><div class="rc"><strong>AIIMS Raipur</strong><span class="rrank">AIR 1,376 (R1:1,235, Final:1,376)</span></div></li>
+  </ol>
+</div>
+
+<!-- DELHI GOVT -->
+<div class="rank-card">
+  <div class="rank-card-header rh-delhi">Delhi Govt Colleges — AIQ Ranks (Gen, KA student via AIQ only)</div>
+  <ol>
+    <li><span class="rn">1</span><div class="rc"><strong>MAMC Delhi</strong><span class="rrank">AIR 103 (R1:85, R2:87, Final:103)</span></div></li>
+    <li><span class="rn">2</span><div class="rc"><strong>VMMC &amp; Safdarjung</strong><span class="rrank">AIR 132 (R1:107, Final:132)</span></div></li>
+    <li><span class="rn">3</span><div class="rc"><strong>UCMS Delhi</strong><span class="rrank">AIR 559 (R1:~400, Final:559)</span></div></li>
+    <li><span class="rn">4</span><div class="rc"><strong>ABVIMS &amp; RML Delhi</strong><span class="rrank">AIR 215 (R1:145, R2:215, Final:215) ✅ verified</span></div></li>
+    <li><span class="rn">5</span><div class="rc"><strong>AFMC Pune</strong><span class="rrank">670 marks (Boys) / 685 marks (Girls) + interview</span></div></li>
+  </ol>
+</div>
+
+<!-- KA COLLEGES -->
+<div class="rank-card">
+  <div class="rank-card-header rh-ka">Karnataka Colleges — KEA State Quota (KA General Domicile)</div>
+  <ol>
+    <li><span class="rn">1</span><div class="rc"><strong>BMCRI Bangalore (Govt)</strong><span class="rrank">KEA state ~7,589 AIR · AIQ Final:1,549</span></div></li>
+    <li><span class="rn">2</span><div class="rc"><strong>Mysore MC MMCRI (Govt)</strong><span class="rrank">KEA state ~25K–50K AIR · AIQ ~5K–10K</span></div></li>
+    <li><span class="rn">3</span><div class="rc"><strong>KIMS Hubli (Govt)</strong><span class="rrank">KEA state ~40K–80K AIR · AIQ ~8K–15K</span></div></li>
+    <li><span class="rn">4</span><div class="rc"><strong>JN Medical Belagavi (Private/KLE)</strong><span class="rrank">KEA G-quota · AIQ Final:~1,500–3,000</span></div></li>
+    <li><span class="rn">5</span><div class="rc"><strong>MS Ramaiah (Private/RGUHS)</strong><span class="rrank">KEA GM quota closes ~6,905–11,776 AIR</span></div></li>
+    <li><span class="rn">6</span><div class="rc"><strong>St. John's (Private Minority)</strong><span class="rrank">KEA very limited · AIQ ~15K–25K</span></div></li>
+    <li><span class="rn">7</span><div class="rc"><strong>KMC Mangalore (Deemed/MAHE)</strong><span class="rrank">MCC Deemed only · Final:~52K–57K</span></div></li>
+    <li><span class="rn">8</span><div class="rc"><strong>JSS Medical Mysuru (Deemed/JSS)</strong><span class="rrank">MCC Deemed only · Final:~1.17L–1.7L</span></div></li>
+  </ol>
+</div>
+
+<!-- OTHER STATE GOVT -->
+<div class="rank-card">
+  <div class="rank-card-header rh-state">Notable Other State Govt — AIQ Ranks (KA student = AIQ only)</div>
+  <ol>
+    <li><span class="rn">1</span><div class="rc"><strong>BHU Varanasi (IMS)</strong><span class="rrank">AIR 1,709 (R1:1,165, Final:1,709) · No bond</span></div></li>
+    <li><span class="rn">2</span><div class="rc"><strong>KGMU Lucknow</strong><span class="rrank">AIR 2,588 (R1:1,628, Final:2,588) · MBBS+PG bond</span></div></li>
+    <li><span class="rn">3</span><div class="rc"><strong>SMS Jaipur</strong><span class="rrank">AIR 2,531 (R1:~1,200, Final:2,531) · MASSIVE PG bond (up to ₹1.5Cr)</span></div></li>
+    <li><span class="rn">4</span><div class="rc"><strong>Seth GS KEM Mumbai</strong><span class="rrank">AIR 1,126 (R1:868, Final:1,126) · MH bond</span></div></li>
+    <li><span class="rn">5</span><div class="rc"><strong>IPGMER Kolkata</strong><span class="rrank">AIR 18,783 (Final) · No bond — high AIQ rank as WB domicile fills 85%</span></div></li>
+    <li><span class="rn">6</span><div class="rc"><strong>Madras Medical College</strong><span class="rrank">AIR 1,296 (R1:~900, Final:1,296) · No bond (TN)</span></div></li>
+    <li><span class="rn">7</span><div class="rc"><strong>Osmania MC Hyderabad</strong><span class="rrank">AIR ~3K–8K · PG bond 3yr TG</span></div></li>
+    <li><span class="rn">8</span><div class="rc"><strong>AMU Aligarh (open seats)</strong><span class="rrank">AIR ~5K–8K (50 open seats) · No bond</span></div></li>
+    <li><span class="rn">9</span><div class="rc"><strong>Medical College Kolkata</strong><span class="rrank">AIR 3,581 (R1:~2,500, Final:3,581) · No bond (WB)</span></div></li>
+    <li><span class="rn">10</span><div class="rc"><strong>BJ Medical Ahmedabad</strong><span class="rrank">AIR 889 (R1:~700, Final:889) · 1yr GJ bond</span></div></li>
+    <li><span class="rn">11</span><div class="rc"><strong>GMC Chandigarh</strong><span class="rrank">AIR 690 (R1:~580, Final:690) · No bond</span></div></li>
+  </ol>
+</div>
+
+<!-- DEEMED (MCC) -->
+<div class="rank-card">
+  <div class="rank-card-header rh-deemed">Deemed Universities — MCC AIQ Closing Ranks</div>
+  <ol>
+    <li><span class="rn">1</span><div class="rc"><strong>CMC Vellore</strong><span class="rrank">~Top 20 AIR (2 open seats only!)</span></div></li>
+    <li><span class="rn">2</span><div class="rc"><strong>KMC Manipal</strong><span class="rrank">~31,834 (✅ verified)</span></div></li>
+    <li><span class="rn">3</span><div class="rc"><strong>KMC Mangalore</strong><span class="rrank">~52K–57K (✅ MCC data)</span></div></li>
+    <li><span class="rn">4</span><div class="rc"><strong>Amrita (Kochi/Cbe)</strong><span class="rrank">~60K–90K</span></div></li>
+    <li><span class="rn">5</span><div class="rc"><strong>Dayanand MC Ludhiana</strong><span class="rrank">~10K–20K (private, no bond)</span></div></li>
+    <li><span class="rn">6</span><div class="rc"><strong>Sri Ramachandra (SRIHER)</strong><span class="rrank">~50K–80K</span></div></li>
+    <li><span class="rn">7</span><div class="rc"><strong>SRM / Saveetha / DY Patil</strong><span class="rrank">~60K–1.5L (very high, expensive)</span></div></li>
+    <li><span class="rn">8</span><div class="rc"><strong>JSS Mysuru (Deemed)</strong><span class="rrank">~1.17L–1.7L (management seats close late)</span></div></li>
+  </ol>
+</div>
+
+</div><!-- rank-grid -->
+
+<!-- QUICK STRATEGY BOX -->
+<div style="margin-top:24px;">
+<div style="background:var(--ink);color:#fff;border-radius:var(--r);padding:20px 24px;">
+<div style="font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#7dd3e8;margin-bottom:12px">Quick Strategy for KA General Domicile</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;font-size:.8rem;line-height:1.6;">
+  <div><span style="color:#7dd3e8;font-weight:600">Under AIR 50</span><br>AIIMS Delhi. No bond ever.</div>
+  <div><span style="color:#7dd3e8;font-weight:600">AIR 51–110</span><br>MAMC Delhi (AIR ~103) or VMMC (132). New Delhi bond from 2025-26.</div>
+  <div><span style="color:#7dd3e8;font-weight:600">AIR 111–300</span><br>JIPMER (260), AFMC Pune (if interest in defence). No bond.</div>
+  <div><span style="color:#7dd3e8;font-weight:600">AIR 301–600</span><br>AIIMS Jodhpur (386), AIIMS Bhopal (634), UCMS Delhi (559). All no bond except Delhi.</div>
+  <div><span style="color:#7dd3e8;font-weight:600">AIR 601–1,000</span><br>AIIMS Rishikesh (~816). No bond.</div>
+  <div><span style="color:#7dd3e8;font-weight:600">AIR 1,001–2,000</span><br>Seth GS KEM Mumbai (~1,126), BHU (~1,709), BMCRI via AIQ (~1,549). MH/KA bond.</div>
+  <div><span style="color:#7dd3e8;font-weight:600">AIR 2,001–5,000</span><br>AIIMS Raipur (1,376), KGMU (2,588), SMS Jaipur (2,531), AIIMS Gorakhpur (~2,602). ⚠️ Check bonds. Note: AIIMS Patna 2025=4,952 (anomaly year).</div>
+  <div><span style="color:#7dd3e8;font-weight:600">NEET 600+ marks (KEA state)</span><br>BMCRI / MMCRI via KEA state quota. Best value for KA student. 1yr KA bond.</div>
+  <div><span style="color:#7dd3e8;font-weight:600">NEET 550+ marks (KEA state)</span><br>KIMS Hubli, MS Ramaiah GM quota, JN Medical Belagavi KEA. No/minimal bond.</div>
+</div>
+</div>
+</div>
+
+</div><!-- section -->
+
+<footer class="footer">
+  <strong>Data sources:</strong> MCC NEET UG 2025 official allotment data · Sartha.in · Shiksha.com · Careers360 · Collegedunia · KEA 2024-25 data ·
+  <strong>Fees:</strong> FRA Karnataka / MFAC regulated figures (2025-26) — verify with college before admission ·
+  <strong>Bonds:</strong> Official DME brochures and MCC annexures · Last updated June 2026 ·
+  All cutoffs are final-round General/UR category under AIQ unless noted. KEA state quota cutoffs are Karnataka domicile only.
+</footer>
+
+
+<script>
+// ── COLUMN FILTER ENGINE ──────────────────────────────────────────────────
+const mainTable = document.querySelector('table');
+const allRows = () => mainTable ? Array.from(mainTable.querySelectorAll('tbody tr')) : [];
+let colFilters = {}; // {colIndex: searchText}
+let quickText = '';
+
+function getCellText(row, colIndex) {
+  const cells = row.querySelectorAll('td');
+  if (!cells[colIndex]) return '';
+  return cells[colIndex].innerText.toLowerCase().replace(/\s+/g,' ').trim();
+}
+
+function getRowText(row) {
+  return Array.from(row.querySelectorAll('td')).map(c => c.innerText).join(' ').toLowerCase();
+}
+
+function applyFilters() {
+  const rows = allRows();
+  let visible = 0;
+  rows.forEach(row => {
+    if (row.querySelector('td[colspan]') && row.querySelectorAll('td').length <= 2) {
+      // section header rows — always show
+      row.classList.remove('tbl-filtered-out'); return;
+    }
+    let show = true;
+    // column filters
+    for (const [col, text] of Object.entries(colFilters)) {
+      if (!text) continue;
+      if (!getCellText(row, parseInt(col)).includes(text.toLowerCase())) { show = false; break; }
+    }
+    // quick search (all columns)
+    if (show && quickText) {
+      if (!getRowText(row).includes(quickText.toLowerCase())) show = false;
+    }
+    row.classList.toggle('tbl-filtered-out', !show);
+    if (show) visible++;
+  });
+  const total = rows.filter(r => !(r.querySelector('td[colspan]') && r.querySelectorAll('td').length <= 2)).length;
+  const countEl = document.getElementById('filterCount');
+  if (countEl) {
+    const hasFilter = quickText || Object.values(colFilters).some(v => v);
+    countEl.textContent = hasFilter ? `Showing ${visible} of ${total} colleges` : '';
+  }
+}
+
+function filterTable(input) {
+  const col = input.getAttribute('data-col');
+  colFilters[col] = input.value.trim();
+  applyFilters();
+}
+
+// Quick global search
+const qs = document.getElementById('quickSearch');
+const qc = document.getElementById('quickClear');
+if (qs) {
+  qs.addEventListener('input', function() {
+    quickText = this.value.trim();
+    if (qc) qc.style.display = quickText ? 'inline' : 'none';
+    applyFilters();
+  });
+}
+function clearQuickSearch() {
+  if (qs) { qs.value = ''; quickText = ''; }
+  if (qc) qc.style.display = 'none';
+  applyFilters();
+}
+
+// Stop filter input clicks from propagating to table sort etc
+document.querySelectorAll('.col-search').forEach(input => {
+  input.addEventListener('click', e => e.stopPropagation());
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { e.target.value = ''; filterTable(e.target); e.target.blur(); }
+  });
+});
+</script>
+
+</body>
+</html>

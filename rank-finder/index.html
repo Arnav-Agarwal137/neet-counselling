@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KCET Rank 1300 — College Finder</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #0f1117;
+      color: #e8eaf0;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #1a1d2e 0%, #0f1117 100%);
+      border-bottom: 1px solid #1e2235;
+      padding: 20px 20px 16px;
+    }
+    .header-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #5a6080;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .header-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .header-title span { color: #4f8ef7; }
+    .header-sub {
+      font-size: 12px;
+      color: #5a6080;
+      margin-top: 4px;
+    }
+
+    /* GROUP TABS */
+    .group-tabs {
+      display: flex;
+      border-bottom: 1px solid #1e2235;
+      overflow-x: auto;
+      background: #0f1117;
+      scrollbar-width: none;
+    }
+    .group-tabs::-webkit-scrollbar { display: none; }
+    .group-tab {
+      padding: 10px 14px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: #5a6080;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+      font-family: inherit;
+      transition: color 0.15s;
+    }
+    .group-tab.active {
+      border-bottom: 2px solid #4f8ef7;
+      color: #4f8ef7;
+    }
+
+    /* COURSE PILLS */
+    .course-pills {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      overflow-x: auto;
+      background: #0d0f1a;
+      border-bottom: 1px solid #1e2235;
+      scrollbar-width: none;
+    }
+    .course-pills::-webkit-scrollbar { display: none; }
+    .course-pill {
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid #1e2235;
+      background: transparent;
+      color: #5a6080;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .course-pill.active {
+      border-color: #4f8ef7;
+      background: #1a2a4a;
+      color: #7fb3ff;
+    }
+
+    /* COURSE HEADER */
+    .course-header {
+      padding: 14px 16px 0;
+    }
+    .course-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .course-desc {
+      font-size: 11px;
+      color: #5a6080;
+      margin-top: 2px;
+    }
+
+    /* FILTER BUTTONS */
+    .filters {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid #1e2235;
+      background: transparent;
+      color: #5a6080;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .filter-btn.active-all {
+      border-color: #4f8ef7;
+      background: #1a2a4a;
+      color: #7fb3ff;
+    }
+    .filter-btn.active-yes {
+      border-color: #22c55e;
+      background: #0f2a1a;
+      color: #4ade80;
+    }
+    .filter-btn.active-no {
+      border-color: #ef4444;
+      background: #2a0f0f;
+      color: #f87171;
+    }
+
+    /* COLLEGE LIST */
+    .college-list {
+      padding: 12px 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .college-card {
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: opacity 0.15s;
+    }
+    .college-card.yes {
+      background: #0d1f14;
+      border: 1px solid #1a3a22;
+      border-left: 3px solid #22c55e;
+    }
+    .college-card.no {
+      background: #1a0f0f;
+      border: 1px solid #2a1515;
+      border-left: 3px solid #ef4444;
+    }
+    .college-card.hidden { display: none; }
+    .college-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e8eaf0;
+    }
+    .college-code {
+      font-size: 10px;
+      color: #5a6080;
+      margin-top: 2px;
+      letter-spacing: 1px;
+    }
+    .cutoff-right { text-align: right; }
+    .cutoff-label {
+      font-size: 11px;
+      color: #5a6080;
+      margin-bottom: 2px;
+    }
+    .cutoff-value {
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .cutoff-value.yes { color: #4ade80; }
+    .cutoff-value.no { color: #f87171; }
+    .cutoff-status {
+      font-size: 10px;
+      font-weight: 700;
+      margin-top: 2px;
+      letter-spacing: 0.5px;
+    }
+    .cutoff-status.yes { color: #4ade80; }
+    .cutoff-status.no { color: #f87171; }
+
+    /* FOOTER */
+    .footer {
+      padding: 0 16px 28px;
+      font-size: 10px;
+      color: #3a4060;
+      line-height: 1.7;
+    }
+
+    /* EMPTY STATE */
+    .empty {
+      text-align: center;
+      padding: 32px 16px;
+      color: #3a4060;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">KCET 2025 · GM Category</div>
+  <div class="header-title">Rank <span>1300</span> — Where You Get In</div>
+  <div class="header-sub">Based on final round closing ranks across top Karnataka colleges</div>
+</div>
+
+<div class="group-tabs" id="groupTabs"></div>
+<div class="course-pills" id="coursePills"></div>
+
+<div class="course-header">
+  <div class="course-title" id="courseTitle"></div>
+  <div class="course-desc" id="courseDesc"></div>
+  <div class="filters" id="filters"></div>
+</div>
+
+<div class="college-list" id="collegeList"></div>
+
+<div class="footer">
+  Your rank 1300 is compared to each college's final round closing rank. Green = rank 1300 is better (lower number) than the cutoff. Red = cutoff is lower than 1300, meaning you would not have been admitted. All data from KCET 2025 final round, GM category. Some values marked with ~ are approximated from multi-year trends where exact final round data was unavailable.
+</div>
+
+<script>
+const MY_RANK = 1300;
+
+const data = {
+  "CSE": {
+    desc: "Computer Science & Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 499, get: false },
+      { name: "BMSCE", code: "E003", cutoff: 3870, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 2076, get: true },
+      { name: "PES University (RR)", code: "E009", cutoff: 1800, get: true },
+      { name: "UVCE (Govt)", code: "E001", cutoff: 4732, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 2500, get: true },
+      { name: "SIT Tumkur", code: "E016", cutoff: 3200, get: true },
+      { name: "DSCE", code: "E007", cutoff: 7000, get: true },
+      { name: "BIT Bangalore", code: "E008", cutoff: 6000, get: true },
+    ],
+  },
+  "CSE — AI & ML": {
+    desc: "CSE with Artificial Intelligence & Machine Learning",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 742, get: false },
+      { name: "PES University (RR)", code: "E009", cutoff: 1800, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 2500, get: true },
+      { name: "BMSCE", code: "E003", cutoff: 4646, get: true },
+      { name: "UVCE (Govt)", code: "E001", cutoff: 5000, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 3000, get: true },
+      { name: "SIT Tumkur", code: "E016", cutoff: 4500, get: true },
+      { name: "DSCE", code: "E007", cutoff: 6500, get: true },
+    ],
+  },
+  "CSE — Data Science": {
+    desc: "CSE with Data Science specialisation",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 944, get: false },
+      { name: "PES University (RR)", code: "E009", cutoff: 2000, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 2800, get: true },
+      { name: "BMSCE", code: "E003", cutoff: 4200, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 3500, get: true },
+      { name: "SIT Tumkur", code: "E016", cutoff: 5000, get: true },
+    ],
+  },
+  "CSE — Cyber Security": {
+    desc: "CSE with Cyber Security specialisation",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 850, get: false },
+      { name: "PES University (RR)", code: "E009", cutoff: 2000, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 2600, get: true },
+      { name: "BMSCE", code: "E003", cutoff: 4500, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 3800, get: true },
+    ],
+  },
+  "ISE": {
+    desc: "Information Science & Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 742, get: false },
+      { name: "MSRIT", code: "E006", cutoff: 2500, get: true },
+      { name: "PES University (RR)", code: "E009", cutoff: 2200, get: true },
+      { name: "BMSCE", code: "E003", cutoff: 4000, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 3000, get: true },
+      { name: "UVCE (Govt)", code: "E001", cutoff: 5500, get: true },
+      { name: "SIT Tumkur", code: "E016", cutoff: 4000, get: true },
+      { name: "DSCE", code: "E007", cutoff: 7500, get: true },
+    ],
+  },
+  "ECE": {
+    desc: "Electronics & Communication Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 934, get: false },
+      { name: "MSRIT", code: "E006", cutoff: 4000, get: true },
+      { name: "PES University (RR)", code: "E009", cutoff: 4500, get: true },
+      { name: "BMSCE", code: "E003", cutoff: 5500, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 5000, get: true },
+      { name: "UVCE (Govt)", code: "E001", cutoff: 6500, get: true },
+      { name: "SIT Tumkur", code: "E016", cutoff: 6000, get: true },
+      { name: "BIT Bangalore", code: "E008", cutoff: 8000, get: true },
+      { name: "DSCE", code: "E007", cutoff: 9000, get: true },
+    ],
+  },
+  "E&TC": {
+    desc: "Electronics & Telecommunication Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 1200, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 5000, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 6000, get: true },
+    ],
+  },
+  "EEE": {
+    desc: "Electrical & Electronics Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 1900, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 8000, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 9000, get: true },
+      { name: "BMSCE", code: "E003", cutoff: 10000, get: true },
+      { name: "SIT Tumkur", code: "E016", cutoff: 12000, get: true },
+    ],
+  },
+  "EIE": {
+    desc: "Electronics & Instrumentation Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 2500, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 6000, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 7000, get: true },
+    ],
+  },
+  "Aerospace": {
+    desc: "Aerospace Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 2950, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 8000, get: true },
+    ],
+  },
+  "Mechanical": {
+    desc: "Mechanical Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 3800, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 12000, get: true },
+      { name: "BMSCE", code: "E003", cutoff: 15000, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 18000, get: true },
+      { name: "PES University (RR)", code: "E009", cutoff: 20000, get: true },
+      { name: "SIT Tumkur", code: "E016", cutoff: 20000, get: true },
+      { name: "UVCE (Govt)", code: "E001", cutoff: 30000, get: true },
+    ],
+  },
+  "Civil": {
+    desc: "Civil Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 9539, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 20000, get: true },
+      { name: "BMSCE", code: "E003", cutoff: 25000, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 30000, get: true },
+      { name: "SIT Tumkur", code: "E016", cutoff: 35000, get: true },
+      { name: "UVCE (Govt)", code: "E001", cutoff: 40000, get: true },
+    ],
+  },
+  "Chemical": {
+    desc: "Chemical Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 9000, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 18000, get: true },
+      { name: "BMSCE", code: "E003", cutoff: 20000, get: true },
+    ],
+  },
+  "Biotechnology": {
+    desc: "Biotechnology Engineering",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 9000, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 16000, get: true },
+      { name: "NIE Mysuru", code: "E022", cutoff: 18000, get: true },
+      { name: "BMSCE", code: "E003", cutoff: 20000, get: true },
+    ],
+  },
+  "Industrial Engg": {
+    desc: "Industrial Engineering & Management",
+    colleges: [
+      { name: "RVCE", code: "E005", cutoff: 15000, get: true },
+      { name: "MSRIT", code: "E006", cutoff: 25000, get: true },
+    ],
+  },
+  "BArch": {
+    desc: "Bachelor of Architecture",
+    colleges: [
+      { name: "MSRIT", code: "E006", cutoff: 138, get: false },
+      { name: "UVCE (Govt)", code: "E001", cutoff: 500, get: false },
+    ],
+  },
+};
+
+const courseGroups = [
+  { label: "CS & IT", keys: ["CSE", "CSE — AI & ML", "CSE — Data Science", "CSE — Cyber Security", "ISE"] },
+  { label: "Electronics", keys: ["ECE", "E&TC", "EEE", "EIE"] },
+  { label: "Core Engg", keys: ["Aerospace", "Mechanical", "Civil", "Chemical", "Industrial Engg"] },
+  { label: "Life Sci", keys: ["Biotechnology"] },
+  { label: "Architecture", keys: ["BArch"] },
+];
+
+let activeGroup = "CS & IT";
+let activeCourse = "CSE";
+let activeFilter = "all";
+
+function render() {
+  // Group tabs
+  const groupTabsEl = document.getElementById("groupTabs");
+  groupTabsEl.innerHTML = courseGroups.map(g => `
+    <button class="group-tab ${g.label === activeGroup ? 'active' : ''}"
+      onclick="selectGroup('${g.label}')">${g.label}</button>
+  `).join("");
+
+  // Course pills
+  const group = courseGroups.find(g => g.label === activeGroup);
+  const coursePillsEl = document.getElementById("coursePills");
+  coursePillsEl.innerHTML = group.keys.map(k => `
+    <button class="course-pill ${k === activeCourse ? 'active' : ''}"
+      onclick="selectCourse('${k}')">${k}</button>
+  `).join("");
+
+  // Course info
+  const cd = data[activeCourse];
+  document.getElementById("courseTitle").textContent = activeCourse;
+  document.getElementById("courseDesc").textContent = cd.desc;
+
+  const yesCount = cd.colleges.filter(c => c.get).length;
+  const noCount = cd.colleges.filter(c => !c.get).length;
+
+  document.getElementById("filters").innerHTML = `
+    <button class="filter-btn ${activeFilter === 'all' ? 'active-all' : ''}"
+      onclick="setFilter('all')">All ${cd.colleges.length}</button>
+    <button class="filter-btn ${activeFilter === 'yes' ? 'active-yes' : ''}"
+      onclick="setFilter('yes')">You Get In ${yesCount}</button>
+    <button class="filter-btn ${activeFilter === 'no' ? 'active-no' : ''}"
+      onclick="setFilter('no')">Out of Range ${noCount}</button>
+  `;
+
+  // Colleges
+  const filtered = cd.colleges.filter(c => {
+    if (activeFilter === "yes") return c.get;
+    if (activeFilter === "no") return !c.get;
+    return true;
+  });
+
+  const listEl = document.getElementById("collegeList");
+  if (filtered.length === 0) {
+    listEl.innerHTML = `<div class="empty">No colleges match this filter.</div>`;
+    return;
+  }
+
+  listEl.innerHTML = filtered.map(c => `
+    <div class="college-card ${c.get ? 'yes' : 'no'}">
+      <div>
+        <div class="college-name">${c.name}</div>
+        <div class="college-code">KEA ${c.code}</div>
+      </div>
+      <div class="cutoff-right">
+        <div class="cutoff-label">Cutoff</div>
+        <div class="cutoff-value ${c.get ? 'yes' : 'no'}">${c.cutoff.toLocaleString()}</div>
+        <div class="cutoff-status ${c.get ? 'yes' : 'no'}">${c.get ? '✓ YOU GET IN' : '✗ OUT OF RANGE'}</div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function selectGroup(label) {
+  activeGroup = label;
+  activeCourse = courseGroups.find(g => g.label === label).keys[0];
+  activeFilter = "all";
+  render();
+}
+
+function selectCourse(key) {
+  activeCourse = key;
+  activeFilter = "all";
+  render();
+}
+
+function setFilter(f) {
+  activeFilter = f;
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
