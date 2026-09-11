@@ -16,6 +16,9 @@ a.card{display:block;text-decoration:none;color:inherit;background:var(--card);b
  border-radius:12px;padding:18px 20px;margin-bottom:12px;transition:border-color .15s,transform .15s}
 a.card:hover{border-color:var(--accent);transform:translateY(-1px)}
 a.card b{display:block;font-size:17.5px;margin-bottom:4px}
+a.card.hero{border-color:var(--accent);border-width:2px}
+a.card.hero b{font-size:20px}
+a.card.hero span b{font-size:inherit;display:inline;color:var(--ink)}
 a.card span{color:var(--dim);font-size:14.5px;display:block}
 .feat{margin:34px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
 @media(max-width:620px){.feat{grid-template-columns:1fr}}
@@ -32,14 +35,19 @@ footer a{color:var(--accent)}
 <body>
 <div class="wrap">
 <h1>NEET Counselling Toolkit</h1>
-<p class="lede">Five tools for the part nobody prepares you for: after the result.</p>
-<p class="note">Two years to get the rank. Then a week to make a decision you live with for five and a half years.</p>
+<p class="lede">Six tools for the part nobody prepares you for: after the result.</p>
+<p class="note">Two years to get the rank. Then a week to make a decision you live with for five and a half years &mdash; and in India, that decision is made by the whole family, not one person.</p>
+<a class="card hero" href="where-you-get-in/"><b>Where You Get In &nbsp;&mdash;&nbsp; the main one</b><span>Every college sorted into <b>You get in &middot; Borderline &middot; Out</b> against your rank, category, quota and domicile &mdash; and your family can reply on individual colleges and counter each other. Share it to WhatsApp. Your board sits on its own private link &mdash; no account, and nobody finds it without that link. Campus detail, maps, dark mode.</span></a>
 <a class="card" href="rank-finder/"><b>Rank Finder</b><span>Enter a rank &mdash; colleges split into You Get In and Out of Range, with live counts</span></a>
 <a class="card" href="nirf-karnataka/"><b>NIRF Karnataka College Guide</b><span>NIRF 2025 rank, fees, bond terms and your own notes. Search, filter, sort, print</span></a>
 <a class="card" href="state-colleges/"><b>State Medical Colleges 2026</b><span>The full Karnataka state-quota list, searchable, print-ready</span></a>
 <a class="card" href="aiims-and-central/"><b>AIIMS &amp; Central Colleges</b><span>AIIMS, BHU, MAMC, VMMC and the rest &mdash; filters as you type</span></a>
 <a class="card" href="document-checklist/"><b>Master Document Checklist</b><span>Every document MCC and KEA want. Remembers your ticks. Prints to one page</span></a>
 <ul class="feat">
+<li>Rank verdicts: get in / borderline / out</li>
+<li>Your family can reply, per college</li>
+<li>Private board on a random link, no sign-up</li>
+<li>Share straight to WhatsApp</li>
 <li>Instant search</li>
 <li>Filter by quota, category, state</li>
 <li>Sort any column</li>
